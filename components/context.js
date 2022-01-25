@@ -15,10 +15,10 @@ export function AppContextProvider({ children }) {
   });
   const [isSorted, setIsSorted] = useState(false);
 
-  console.log("--items: ", items);
-  console.log("--filteredItems: ", filteredItems);
-  console.log("--filters: ", filters);
-  console.log("--isSorted: ", isSorted);
+  //   console.log("--items: ", items);
+  //   console.log("--filteredItems: ", filteredItems);
+  //   console.log("--filters: ", filters);
+  //   console.log("--isSorted: ", isSorted);
 
   function categories() {
     let newCategories = [];

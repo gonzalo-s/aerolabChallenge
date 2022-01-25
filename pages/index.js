@@ -5,7 +5,7 @@ import Filter from "../components/Filter";
 import Sort from "../components/Sort";
 import { FilterSortWrapper } from "../styles/styledComponents";
 import { useAppContext } from "../components/context";
-
+import AddBalance from "../components/AddBalance";
 const axios = require("axios");
 
 export default function Home() {
@@ -34,16 +34,16 @@ export default function Home() {
 
   async function addPoints(amount) {
     try {
-      const response = await postUserPoints(amount);
+      const response = await postUserPoints(parseInt(amount));
       setIsDataUpdated(false);
     } catch (error) {
       console.log(error);
     }
   }
 
-  function addPointsHandler(amount) {
-    addPoints(parseInt(amount));
-  }
+  // function addPointsHandler(amount) {
+  //   addPoints(parseInt(amount));
+  // }
 
   async function postRedeem(itemId) {
     try {
@@ -140,27 +140,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="addBalance">
-          {userData ? <div>{userData?.points}</div> : <div>Points</div>}
-          <button
-            value={1000}
-            onClick={(e) => addPointsHandler(e.target.value)}
-          >
-            1000
-          </button>
-          <button
-            value={5000}
-            onClick={(e) => addPointsHandler(e.target.value)}
-          >
-            5000
-          </button>
-          <button
-            value={7500}
-            onClick={(e) => addPointsHandler(e.target.value)}
-          >
-            7500
-          </button>
-        </div>
+        <AddBalance addPoints={addPoints} isLoading={isLoading} />
         <FilterSortWrapper>
           <Filter />
           <Sort />

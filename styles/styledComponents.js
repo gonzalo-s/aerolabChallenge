@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TriangleDown } from "@styled-icons/entypo/TriangleDown";
+import { TriangleDown, ChevronDown } from "@styled-icons/entypo";
 
 const colors = {
   neutral900: "#252F3D",
@@ -41,9 +41,20 @@ export const TriangleDownIcon = styled(TriangleDown)`
   color: black;
 `;
 
+export const ChevronDownIcon = styled(ChevronDown)`
+  width: 16px;
+  color: ${colors.neutral500};
+`;
+export const ChevronUpIcon = styled(ChevronDown)`
+  width: 16px;
+  transform: rotate(90);
+  color: ${colors.neutral500};
+`;
 export const SortWrapper = styled.div`
   display: flex;
 `;
+
+export const BalanceWrapper = styled(SortWrapper)``;
 
 export const TextL1 = styled.div`
   width: 100%;
@@ -65,11 +76,9 @@ export const TextL1 = styled.div`
   ${textStyles.desktopL1}
 `;
 
-export const SortButton = styled.button`
+export const Button = styled.button`
   display: flex;
   align-items: center;
-  width: 165px;
-  height: 43px;
   background: ${(props) =>
     props.isActive ? colors.brandDefault : colors.brandLight};
   border: none;
@@ -78,46 +87,22 @@ export const SortButton = styled.button`
   color: ${colors.neutral100};
 `;
 
-export const FilterMenuButton = styled.button`
-  cursor: pointer;
+export const PointsBalance = styled(Button)`
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: space-evenly;
   ${textStyles.desktopL1};
-  height: 59px;
-  width: 256px;
   left: 0px;
   top: 0px;
   border-radius: 16px;
   padding: 16px, 8px, 16px, 24px;
-  justify-content: space-between;
   color: ${colors.neutral600};
   border: 1px solid ${colors.neutral200};
   background-color: ${colors.neutral0};
 `;
 
-export const FilterMenuWrapper = styled.button`
-  display: ${(props) => (props.isMenuVisible ? "flex" : "none")};
-  flex-direction: column;
-  position: absolute;
-  border-radius: 16px;
-  border: 1px solid ${colors.neutral200};
-`;
-
-export const FilterItem = styled.li`
-  cursor: pointer;
-  display: flex;
-  ${textStyles.desktopL1};
-  height: 59px;
-  width: 256px;
-  left: 0px;
-  top: 0px;
-  padding: 16px, 8px, 16px, 24px;
-  justify-content: space-between;
-  color: ${colors.neutral600};
-  border: none;
-  background-color: ${colors.neutral0};
-`;
+export const BalanceButton = styled(Button)``;
+export const BalanceAddPointsButton = styled(Button)``;
 
 export const FilterSortWrapper = styled.div`
   display: flex;
@@ -125,6 +110,53 @@ export const FilterSortWrapper = styled.div`
 `;
 export const FilterWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width: 20rem;
+  height: 4rem;
+  background-color: green;
+`;
+export const FilterMenuButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: red;
+`;
+export const FilterMenuButton = styled.button`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  ${textStyles.desktopL1};
+  border-radius: 16px;
+  justify-content: space-between;
+  color: ${colors.neutral600};
+  border: 1px solid ${colors.neutral200};
+  background-color: ${colors.neutral0};
+`;
+
+export const FilterMenuWrapper = styled.div`
+  display: ${(props) => (props.isMenuVisible ? "flex" : "none")};
+  flex-direction: column;
+  position: absolute;
+  top: 6rem;
+  left: 6rem;
+  border-radius: 16px;
+  border: 1px solid ${colors.neutral200};
+  background-color: ${colors.neutral0};
+`;
+
+export const FilterItem = styled.li`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  ${textStyles.desktopL1};
+  height: 59px;
+  width: 12rem;
+  padding-left: 2rem;
+  color: ${colors.neutral600};
 `;
 
 export const GalleryWrapper = styled.div`
