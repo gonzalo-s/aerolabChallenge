@@ -1,26 +1,31 @@
 import { createGlobalStyle } from "styled-components";
 import { AppContextProvider } from "../components/context";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../styles/theme";
 
 const GlobalStyle = createGlobalStyle`
-@font-face {
-    font-family: 'Montserrat';
-    src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;900&display=swap')
-    
+
+*{
+  box-sizing: border-box;
 }
+
 html,body {
-    
+
     padding: 0;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    font-size:16px;
   }
 `;
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle />
-      <AppContextProvider>
-        <Component {...pageProps} />
-      </AppContextProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <AppContextProvider>
+          <Component {...pageProps} />
+        </AppContextProvider>
+      </ThemeProvider>
     </>
   );
 }

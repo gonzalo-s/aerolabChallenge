@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Gallery from "../components/Gallery";
 import Filter from "../components/Filter";
 import Sort from "../components/Sort";
-import { FilterSortWrapper } from "../styles/styledComponents";
+import { FilterSortWrapper, Box } from "../styles/styledComponents";
 import { useAppContext } from "../components/context";
 import AddBalance from "../components/AddBalance";
+import StyledLogo from "../styles/StyledLogo";
+
 const axios = require("axios");
 
 export default function Home() {
@@ -137,7 +139,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Challenge</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={"/favicon.ico"} />
       </Head>
       <main>
         <AddBalance addPoints={addPoints} isLoading={isLoading} />
@@ -155,7 +157,6 @@ export default function Home() {
           ""
         )}
       </main>
-
       <footer>Footer</footer>
     </div>
   );
