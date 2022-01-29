@@ -5,8 +5,7 @@ import Filter from "../components/Filter";
 import Sort from "../components/Sort";
 import { FilterSortWrapper, Box } from "../styles/styledComponents";
 import { useAppContext } from "../components/context";
-import AddBalance from "../components/AddBalance";
-import StyledLogo from "../styles/StyledLogo";
+import Navbar from "../components/Navbar";
 
 const axios = require("axios");
 
@@ -42,10 +41,6 @@ export default function Home() {
       console.log(error);
     }
   }
-
-  // function addPointsHandler(amount) {
-  //   addPoints(parseInt(amount));
-  // }
 
   async function postRedeem(itemId) {
     try {
@@ -142,7 +137,7 @@ export default function Home() {
         <link rel="icon" href={"/favicon.ico"} />
       </Head>
       <main>
-        <AddBalance addPoints={addPoints} isLoading={isLoading} />
+        <Navbar addPoints={addPoints} isLoading={isLoading} />
         <FilterSortWrapper>
           <Filter />
           <Sort />

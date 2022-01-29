@@ -1,20 +1,22 @@
 import styled from "styled-components";
-import { TriangleDown, ChevronDown } from "@styled-icons/entypo";
+import { TriangleDown, ChevronDown, ChevronUp } from "@styled-icons/entypo";
 
 export const Box = styled.div`
-  display: flex;
+  display: ${({ display }) => display || "flex"};
   gap: ${({ gap }) => gap || ""};
   position: ${({ position }) => position || ""};
   width: ${({ w }) => w || "100%"};
   height: ${({ h }) => h || "100%"};
   padding: ${({ p }) => p || ""};
-  margin: ${({ m }) => m || "auto"};
+  margin: ${({ m }) => m || ""};
+  left: ${({ left }) => left || ""};
+  right: ${({ right }) => right || ""};
   top: ${({ top }) => top || ""};
   bottom: ${({ bottom }) => bottom || ""};
   flex-direction: ${({ direction }) => direction || "row"};
   align-items: ${({ alignItems }) => alignItems || "center"};
   justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
-
+  pointer-events: ${({ pointerEvents }) => pointerEvents || ""};
   border: ${({ border, theme }) =>
     `${border} solid ${theme.colors.neutral200}`};
   border-bottom: ${({ bb, theme }) =>
@@ -22,48 +24,38 @@ export const Box = styled.div`
   background-color: ${({ bg }) => bg || ""}; ;
 `;
 
-export const TriangleDownIcon = styled(TriangleDown)`
-  width: 16px;
-  color: black;
-`;
-
-export const ChevronDownIcon = styled(ChevronDown)`
-  width: 3rem;
-  color: ${({ theme }) => theme.colors.neutral500};
-`;
-export const ChevronUpIcon = styled(ChevronDown)`
-  //width: 16px;
-  transform: rotate(90);
-  color: ${({ theme }) => theme.colors.neutral500};
-`;
-export const SortWrapper = styled.div`
+export const SimpleButton = styled.button`
+  cursor: pointer;
+  width: ${({ w }) => w || "100%"};
+  height: ${({ h }) => h || "2rem"};
+  padding: ${({ p }) => p || ""};
+  left: ${({ left }) => left || ""};
+  left: ${({ right }) => right || ""};
+  top: ${({ top }) => top || ""};
+  bottom: ${({ bottom }) => bottom || ""};
+  border-radius: ${({ radius }) => radius || "1rem"};
   display: flex;
-`;
-export const TextL1Grad = styled.div`
-  ${({ theme }) => theme.textStyles.desktopText.l1}
-  width: ${({ w }) => w || "50%"};
-  height: ${({ h }) => h || "auto"};
-`;
-export const TextL1 = styled.text`
-  ${({ theme }) => theme.textStyles.desktopText.l1}
-  width: ${({ w }) => w || "50%"};
-  height: ${({ h }) => h || "auto"};
-`;
-export const TextGradient = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: ${({ theme }) => theme.colors.brandDefault};
-  background-size: 100%;
-  ${` -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;`}
+  align-items: ${({ alignItems }) => alignItems || "center"};
+  justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
+  background: ${({ bg, theme }) => bg || theme.colors.brandDefault};
+  border: ${({ border, theme }) =>
+    `${border} solid ${theme.colors.neutral300}`};
+  ${({ theme }) => theme.textStyles.desktopText.l1};
+  color: ${({ theme }) => theme.colors.neutral100};
+  position: ${({ position }) => {
+    position || "";
+  }};
 `;
 
 export const Button = styled.button`
+  cursor: pointer;
   width: ${({ w }) => w || "100%"};
   height: ${({ h }) => h || "2rem"};
+  padding: ${({ p }) => p || ""};
+  left: ${({ left }) => left || ""};
+  left: ${({ right }) => right || ""};
+  top: ${({ top }) => top || ""};
+  bottom: ${({ bottom }) => bottom || ""};
   border-radius: ${({ radius }) => radius || "1rem"};
   display: flex;
   align-items: ${({ alignItems }) => alignItems || "center"};
@@ -73,7 +65,9 @@ export const Button = styled.button`
   border: none;
   ${({ theme }) => theme.textStyles.desktopText.l1};
   color: ${({ theme }) => theme.colors.neutral100};
-
+  position: ${({ position }) => {
+    position || "";
+  }};
   div {
     width: 100%;
     height: 100%;
@@ -94,6 +88,58 @@ export const Button = styled.button`
     ${({ theme }) => theme.textStyles.desktopText.l1}
   }
 `;
+
+export const Wrapper = styled(Box)``;
+
+export const SpanBlock = styled.span`
+  display: block;
+  background-color: green;
+`;
+
+export const TriangleDownIcon = styled(TriangleDown)`
+  width: 16px;
+  color: black;
+`;
+
+export const ChevronDownIcon = styled(ChevronDown)`
+  width: ${({ w }) => w || ""};
+  height: ${({ h }) => h || ""};
+  color: ${({ theme }) => theme.colors.neutral500};
+`;
+export const ChevronUpIcon = styled(ChevronUp)`
+  width: ${({ w }) => w || ""};
+  height: ${({ h }) => h || ""};
+  color: ${({ theme }) => theme.colors.neutral500};
+`;
+export const SortWrapper = styled.div`
+  display: flex;
+`;
+export const TextL1Grad = styled.div`
+  ${({ theme }) => theme.textStyles.desktopText.l1}
+  width: ${({ w }) => w || "50%"};
+  height: ${({ h }) => h || "auto"};
+`;
+export const TextL1 = styled.div`
+  display: flex;
+  ${({ theme }) => theme.textStyles.desktopText.l1}
+  width: ${({ w }) => w || "50%"};
+  height: ${({ h }) => h || "auto"};
+`;
+export const TextGradient = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${({ w }) => w || "100%"};
+  height: ${({ h }) => h || "auto"};
+  ${({ theme }) => theme.textStyles.desktopText.l1}
+  background-image: ${({ theme }) => theme.colors.brandDefault};
+  background-size: 100%;
+  ${` -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;`}
+`;
+
 export const PointsBalance = styled(Button)`
   display: flex;
   align-items: center;
@@ -107,14 +153,16 @@ export const PointsBalance = styled(Button)`
   color: ${({ theme }) => theme.colors.neutral600};
   border: 1px solid ${({ theme }) => theme.colors.neutral200};
   background-color: ${({ theme }) => theme.colors.neutral0};
+  box-shadow: 0 0 8px ${({ theme }) => theme.colors.neutral200};
 `;
 
 export const BalanceMenuWrapper = styled(Box)`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 312px;
-  height: 404px;
+  width: ${({ w }) => w || ""};
+  height: ${({ h }) => h || ""};
+  background-color: ${({ theme }) => theme.colors.neutral0};
   border: 1px solid ${({ theme }) => theme.colors.neutral200};
   border-radius: 1rem;
   box-shadow: 0 0 8px ${({ theme }) => theme.colors.neutral200};
@@ -154,7 +202,7 @@ export const FilterMenuButton = styled.button`
 `;
 
 export const FilterMenuWrapper = styled.div`
-  display: ${(props) => (props.isMenuVisible ? "flex" : "none")};
+  // display: ${(props) => (props.isMenuVisible ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
   top: 6rem;

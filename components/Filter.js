@@ -32,22 +32,22 @@ let useClickOutside = (handler) => {
 
 export default function Filter() {
   const { filters, categories, selectFilterBy } = useAppContext();
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState(false);
 
   const categoriesList = categories();
 
   function handleOnItemClick(category) {
     console.log("category handleOnClick: ", category);
-    setIsMenuVisible(false);
+    setDisplayMenu(false);
     selectFilterBy(category);
   }
 
   function handleOnMenuClick() {
-    setIsMenuVisible(!isMenuVisible);
+    setDisplayMenu(!displayMenu);
   }
 
   let domNode = useClickOutside(() => {
-    setIsMenuVisible(false);
+    setDisplayMenu(false);
   });
 
   return (
@@ -59,29 +59,33 @@ export default function Filter() {
           <TriangleDownIcon />
         </FilterMenuButton>
       </FilterMenuButtonWrapper>
-      <FilterMenuWrapper isMenuVisible={isMenuVisible}>
-        <FilterItem
-          value={"All Products"}
-          onClick={() => {
-            handleOnItemClick("All Products");
-          }}
-        >
-          All Products
-        </FilterItem>
-        {categoriesList.map((category, id) => {
-          return (
-            <FilterItem
-              key={id}
-              value={category}
-              onClick={() => {
-                handleOnItemClick(category);
-              }}
-            >
-              {category}
-            </FilterItem>
-          );
-        })}
-      </FilterMenuWrapper>
+      {displayMenu ? (
+        <FilterMenuWrapper>
+          <FilterItem
+            value={"All Products"}
+            onClick={() => {
+              handleOnItemClick("All Products");
+            }}
+          >
+            All Products
+          </FilterItem>
+          {categoriesList.map((category, id) => {
+            return (
+              <FilterItem
+                key={id}
+                value={category}
+                onClick={() => {
+                  handleOnItemClick(category);
+                }}
+              >
+                {category}
+              </FilterItem>
+            );
+          })}
+        </FilterMenuWrapper>
+      ) : (
+        ""
+      )}
     </FilterWrapper>
   );
 }

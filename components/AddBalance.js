@@ -1,116 +1,174 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Button,
+  Box,
   TextGradient,
   BalanceMenuWrapper,
   PointsBalance,
   ChevronDownIcon,
   ChevronUpIcon,
   ImgContainer,
-  Box,
   TextL1Grad,
-  TextL1,
+  Wrapper,
+  SpanBlock,
+  SimpleButton,
 } from "../styles/styledComponents";
 import { useAppContext } from "./context";
 import card from "../assets/card.png";
 import Image from "next/image";
-import aerolabLogo from "../assets/aerolabLogo.png";
-import StyledLogo from "../styles/StyledLogo";
-import { theme } from "../styles/theme";
+import LogoInvert from "../assets/logoGradInvert.svg";
+import LogoGrad from "../assets/logoGrad.svg";
+import { LogoViolet } from "./LogoViolet";
 
-export default function AddBalance({ addPoints, isLoading }) {
-  const [pointsToAdd, setPointsToAdd] = useState(1000);
+function AddBalance({ addPoints, isLoading }) {
   const { userData } = useAppContext();
+  const [pointsToAdd, setPointsToAdd] = useState(1000);
+  const [displayMenu, setDisplayMenu] = useState(false);
+
   function addNewPoints() {
     addPoints(pointsToAdd);
   }
 
+  let useClickOutside = (handler) => {
+    let domNode = useRef();
+
+    useEffect(() => {
+      let maybeHandler = (event) => {
+        if (!domNode.current.contains(event.target)) {
+          handler();
+        }
+      };
+
+      document.addEventListener("mousedown", maybeHandler);
+
+      return () => {
+        document.removeEventListener("mousedown", maybeHandler);
+      };
+    });
+
+    return domNode;
+  };
+
+  let domNode = useClickOutside(() => {
+    setDisplayMenu(false);
+  });
+
   return (
-    <Box
-      direction="column"
-      bg="green"
+    <Wrapper
+      className="btnAndMenu"
+      alignItems="flex-end"
+      justifyContent="space-between"
+      w="10.75rem"
+      h="3rem"
       position="relative"
-      p="0 14.25rem"
-      h="5rem"
+      ref={domNode}
     >
-      <Box justifyContent="space-between">
-        <ImgContainer w="126px" h="48px">
-          <Image src={aerolabLogo} alt="aerolab logo" />
-        </ImgContainer>
-
-        <PointsBalance
-          w="10.75rem"
-          h="3rem"
-          onClick={() => {
-            console.log("clicked");
-          }}
+      <Box
+        className="buttonAndImageWrapper"
+        p="0"
+        w="10.75rem"
+        h="3rem"
+        alignItems="center"
+        position="relative"
+        justifyContent="stretch"
+      >
+        <Box
+          className="buttonVisualWrapper"
+          position="absolute"
+          left="0"
+          pointerEvents="none"
+          p="1rem"
         >
-          <StyledLogo w="32px" cursor="pointer" />
-
-          <TextGradient>
+          <LogoViolet width="32px" height="32px" viewBox="0 0 256 256" />
+          <TextGradient w="3.75rem" h="100%">
             {isLoading ? "Loading" : userData?.points}
           </TextGradient>
-
-          <ChevronDownIcon size="48px" viewBox="0 0 20 20" />
-        </PointsBalance>
-      </Box>
-      <BalanceMenuWrapper bg="red" top="20rem" position="absolute">
-        <Box bb={"1px"} h="20%" alignItems="center" p={"0 0 0 2rem"}>
-          <TextL1Grad>Add Balance</TextL1Grad>
+          {displayMenu ? (
+            <ChevronUpIcon w="2rem" viewBox="0 0 20 20" />
+          ) : (
+            <ChevronDownIcon w="2rem" viewBox="0 0 20 20" />
+          )}
         </Box>
-
-        <Box
-          className="cardAndButtons"
-          p="1.5rem"
-          direction={"column"}
-          justifyContent={"space-evenly"}
+        <SimpleButton
+          w="100%" //"10.75rem"
+          h="100%"
+          bg="white"
+          border="1px"
+          onClick={() => {
+            setDisplayMenu(!displayMenu);
+          }}
+        />
+      </Box>
+      {displayMenu ? (
+        <BalanceMenuWrapper
+          w="19.5rem"
+          h="25.25rem"
+          right="0"
+          top="3.5rem"
+          position="absolute"
         >
-          <ImgContainer>
-            <Image src={card} alt="card" />
-          </ImgContainer>
+          <Box bb={"1px"} h="20%" alignItems="center" p={"0 0 0 2rem"}>
+            <TextL1Grad>Add Balance</TextL1Grad>
+          </Box>
+
           <Box
-            className="pointsWrapper"
-            h="35px"
-            bg="green"
-            alignItems="stretch"
-            gap="0.25rem"
+            className="cardAndButtons"
+            p="1.5rem"
+            direction={"column"}
+            justifyContent={"space-evenly"}
           >
-            <Button
-              h="100%"
-              radius="0.75rem"
-              isActive={pointsToAdd === 1000 ? true : false}
-              onClick={() => setPointsToAdd(1000)}
+            <ImgContainer>
+              <Image src={card} alt="card" />
+            </ImgContainer>
+            <Box
+              className="pointsWrapper"
+              h="35px"
+              alignItems="stretch"
+              gap="0.25rem"
             >
-              <TextL1Grad> 1000</TextL1Grad>
-            </Button>
+              <Button
+                h="100%"
+                radius="0.75rem"
+                isActive={pointsToAdd === 1000 ? true : false}
+                onClick={() => setPointsToAdd(1000)}
+              >
+                <TextL1Grad> 1000</TextL1Grad>
+              </Button>
+              <Button
+                h="100%"
+                radius="0.75rem"
+                isActive={pointsToAdd === 5000 ? true : false}
+                onClick={() => setPointsToAdd(5000)}
+              >
+                <TextL1Grad> 5000</TextL1Grad>
+              </Button>
+              <Button
+                h="100%"
+                radius="0.75rem"
+                isActive={pointsToAdd === 7500 ? true : false}
+                onClick={() => setPointsToAdd(7500)}
+              >
+                <TextL1Grad> 7500</TextL1Grad>
+              </Button>
+            </Box>
             <Button
-              h="100%"
-              radius="0.75rem"
-              isActive={pointsToAdd === 5000 ? true : false}
-              onClick={() => setPointsToAdd(5000)}
+              isActive={true}
+              onClick={addNewPoints}
+              h={"3rem"}
+              justifyContent="center"
+              p="0 1rem"
+              alignItems="center"
             >
-              <TextL1Grad> 5000</TextL1Grad>
-            </Button>
-            <Button
-              h="100%"
-              radius="0.75rem"
-              isActive={pointsToAdd === 7500 ? true : false}
-              onClick={() => setPointsToAdd(7500)}
-            >
-              <TextL1Grad> 7500</TextL1Grad>
+              <LogoInvert width="50px" height="32px" viewBox="0 0 256 256" />
+              Add Points
             </Button>
           </Box>
-          <Button
-            isActive={true}
-            onClick={addNewPoints}
-            h={"3rem"}
-            justifyContent="center"
-          >
-            <StyledLogo w="32px" invert={true} cursor="pointer" />
-            <TextL1>Add Points</TextL1>
-          </Button>
-        </Box>
-      </BalanceMenuWrapper>
-    </Box>
+        </BalanceMenuWrapper>
+      ) : (
+        ""
+      )}
+    </Wrapper>
   );
 }
+
+export default AddBalance;
