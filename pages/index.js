@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Gallery from "../components/Gallery";
+import Gallery from "../pages/Gallery";
 import Filter from "../components/Filter";
 import Sort from "../components/Sort";
-import { FilterSortWrapper, Box } from "../styles/styledComponents";
+import { FilterSortWrapper } from "../styles/styledComponents";
 import { useAppContext } from "../components/context";
 import Navbar from "../components/Navbar";
-
+import TechZone from "./TechZone";
+import Walkthrough from "./Walktrough";
 const axios = require("axios");
 
 export default function Home() {
@@ -138,6 +139,8 @@ export default function Home() {
       </Head>
       <main>
         <Navbar addPoints={addPoints} isLoading={isLoading} />
+        <TechZone />
+        <Walkthrough />
         <FilterSortWrapper>
           <Filter />
           <Sort />

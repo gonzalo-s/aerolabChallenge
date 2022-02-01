@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { TriangleDown, ChevronDown, ChevronUp } from "@styled-icons/entypo";
+//import WavePatternSvg from "../assets/wavePattern.svg";
 
 export const Box = styled.div`
   display: ${({ display }) => display || "flex"};
   gap: ${({ gap }) => gap || ""};
   position: ${({ position }) => position || ""};
   width: ${({ w }) => w || "100%"};
+  max-width: ${({ maxW }) => maxW || ""};
   height: ${({ h }) => h || "100%"};
   padding: ${({ p }) => p || ""};
   margin: ${({ m }) => m || ""};
@@ -19,34 +21,14 @@ export const Box = styled.div`
   pointer-events: ${({ pointerEvents }) => pointerEvents || ""};
   border: ${({ border, theme }) =>
     `${border} solid ${theme.colors.neutral200}`};
+  border-radius: ${({ radius }) => radius || ""};
   border-bottom: ${({ bb, theme }) =>
-    `${bb} solid ${theme.colors.neutral200}` || ""};
-  background-color: ${({ bg }) => bg || ""}; ;
+    bb ? `${bb} solid ${theme.colors.neutral200}` : ""};
+  background-color: ${({ bg }) => bg || ""};
+  border-radius: ${({ radius }) => radius || ""};
+  transform: ${({ rotate }) => `rotate(${rotate})` || "rotate(0deg)"};
+  overflow: ${({ overflow }) => overflow || ""};
 `;
-
-export const SimpleButton = styled.button`
-  cursor: pointer;
-  width: ${({ w }) => w || "100%"};
-  height: ${({ h }) => h || "2rem"};
-  padding: ${({ p }) => p || ""};
-  left: ${({ left }) => left || ""};
-  left: ${({ right }) => right || ""};
-  top: ${({ top }) => top || ""};
-  bottom: ${({ bottom }) => bottom || ""};
-  border-radius: ${({ radius }) => radius || "1rem"};
-  display: flex;
-  align-items: ${({ alignItems }) => alignItems || "center"};
-  justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
-  background: ${({ bg, theme }) => bg || theme.colors.brandDefault};
-  border: ${({ border, theme }) =>
-    `${border} solid ${theme.colors.neutral300}`};
-  ${({ theme }) => theme.textStyles.desktopText.l1};
-  color: ${({ theme }) => theme.colors.neutral100};
-  position: ${({ position }) => {
-    position || "";
-  }};
-`;
-
 export const Button = styled.button`
   cursor: pointer;
   width: ${({ w }) => w || "100%"};
@@ -57,6 +39,7 @@ export const Button = styled.button`
   top: ${({ top }) => top || ""};
   bottom: ${({ bottom }) => bottom || ""};
   border-radius: ${({ radius }) => radius || "1rem"};
+  gap: ${({ gap }) => gap || ""};
   display: flex;
   align-items: ${({ alignItems }) => alignItems || "center"};
   justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
@@ -68,25 +51,12 @@ export const Button = styled.button`
   position: ${({ position }) => {
     position || "";
   }};
-  div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    ${({ isActive, theme }) =>
-      isActive
-        ? ``
-        : `background-image: ${theme.colors.brandDefault};
-      background-size: 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;`}
-
-    cursor: pointer;
-    ${({ theme }) => theme.textStyles.desktopText.l1}
-  }
+`;
+export const BgGradient = styled(Box)`
+  border-radius: ${({ radius }) => radius || "1rem"};
+  background: ${({ bgGradient, theme }) =>
+    bgGradient ? theme.colors[bgGradient] : theme.colors.brandDefault};
+  border: none;
 `;
 
 export const Wrapper = styled(Box)``;
@@ -111,34 +81,6 @@ export const ChevronUpIcon = styled(ChevronUp)`
   height: ${({ h }) => h || ""};
   color: ${({ theme }) => theme.colors.neutral500};
 `;
-export const SortWrapper = styled.div`
-  display: flex;
-`;
-export const TextL1Grad = styled.div`
-  ${({ theme }) => theme.textStyles.desktopText.l1}
-  width: ${({ w }) => w || "50%"};
-  height: ${({ h }) => h || "auto"};
-`;
-export const TextL1 = styled.div`
-  display: flex;
-  ${({ theme }) => theme.textStyles.desktopText.l1}
-  width: ${({ w }) => w || "50%"};
-  height: ${({ h }) => h || "auto"};
-`;
-export const TextGradient = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${({ w }) => w || "100%"};
-  height: ${({ h }) => h || "auto"};
-  ${({ theme }) => theme.textStyles.desktopText.l1}
-  background-image: ${({ theme }) => theme.colors.brandDefault};
-  background-size: 100%;
-  ${` -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;`}
-`;
 
 export const PointsBalance = styled(Button)`
   display: flex;
@@ -157,6 +99,7 @@ export const PointsBalance = styled(Button)`
 `;
 
 export const BalanceMenuWrapper = styled(Box)`
+  z-index: 999;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -202,7 +145,6 @@ export const FilterMenuButton = styled.button`
 `;
 
 export const FilterMenuWrapper = styled.div`
-  // display: ${(props) => (props.isMenuVisible ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
   top: 6rem;
@@ -210,6 +152,7 @@ export const FilterMenuWrapper = styled.div`
   border-radius: 16px;
   border: 1px solid ${({ theme }) => theme.colors.neutral200};
   background-color: ${({ theme }) => theme.colors.neutral0};
+  z-index: 999;
 `;
 
 export const FilterItem = styled.li`
@@ -242,10 +185,17 @@ export const GallImg = styled.img``;
 
 export const ImgContainer = styled.div`
   display: flex;
-  align-items: stretch;
-
+  justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
+  align-items: ${({ alignItems }) => alignItems || "stretch"};
   width: ${({ w }) => w || "100%"};
   height: ${({ h }) => h || "auto"};
   padding: ${({ p }) => p || ""};
+  background-color: ${({ bg }) => bg || ""};
+  border: ${({ border, theme }) =>
+    `${border} solid ${theme.colors.neutral200}`};
   cursor: ${({ cursor }) => cursor || ""};
+`;
+
+export const WavePattern = styled(Box)`
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0dGVybiBpZD0icGF0dGVybi13YXZlcyIgeD0iMCIgeT0iMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjU2NiIgaGVpZ2h0PSIyNyIgdmlld0JveD0iMCAwIDU2NiAyNyI+CjxwYXRoIGlkPSd3YXZlJyBkPSJNMSAxMy41QzMyLjMzMzMgLTMuMTY2NjcgNjMuNjY2NyAtMy4xNjY2NyA5NSAxMy41QzEyNi4zMzMgMzAuMTY2NyAxNTcuNjY3IDMwLjE2NjcgMTg5IDEzLjVDMjIwLjMzMyAtMy4xNjY2NyAyNTEuNjY3IC0zLjE2NjY3IDI4MyAxMy41QzMxNC4zMzMgMzAuMTY2NyAzNDUuNjY3IDMwLjE2NjcgMzc3IDEzLjVDNDA4LjMzMyAtMy4xNjY2NyA0MzkuNjY3IC0zLjE2NjY3IDQ3MSAxMy41QzUwMi4zMzMgMzAuMTY2NyA1MzMuNjY3IDMwLjE2NjcgNTY1IDEzLjUiIHN0cm9rZT0iI0Y1RjlGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjwvcGF0dGVybj4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuLXdhdmVzKSI+PC9yZWN0Pgo8L3N2Zz4KCg==");
 `;

@@ -4,7 +4,7 @@ import {
   ItemWrapper,
   GallImg,
 } from "../styles/styledComponents";
-import { useAppContext } from "./context";
+import { useAppContext } from "../components/context";
 
 export default function Gallery({ points, redeemItem }) {
   const { items, filteredItems } = useAppContext();

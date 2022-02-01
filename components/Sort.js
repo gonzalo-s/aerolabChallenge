@@ -1,6 +1,6 @@
-import { Button, SortWrapper } from "../styles/styledComponents";
+import { Box } from "../styles/styledComponents";
 import { useAppContext } from "./context";
-
+import ButtonTextGradient from "./ButtonWithTextGradient";
 export default function Sort() {
   const { selectSortBy, filters } = useAppContext();
 
@@ -9,16 +9,30 @@ export default function Sort() {
   }
 
   return (
-    <SortWrapper>
-      <Button isActive={filters?.sortBy === "Most Recent" ? true : false}>
-        <div onClick={() => handleOnClick("Most Recent")}>Most Recent</div>
-      </Button>
-      <Button isActive={filters?.sortBy === "Lowest Price" ? true : false}>
-        <div onClick={() => handleOnClick("Lowest Price")}>Lowest Price</div>
-      </Button>
-      <Button isActive={filters?.sortBy === "Highest Price" ? true : false}>
-        <div onClick={() => handleOnClick("Highest Price")}>Highest Price</div>
-      </Button>
-    </SortWrapper>
+    <Box
+      w="100%"
+      bg="red"
+      h="5rem"
+      alignItems="stretch"
+      justifyContent="center"
+    >
+      <ButtonTextGradient
+        w="100%"
+        h="100%"
+        value="Most Recent"
+        onClick={() => handleOnClick("Most Recent")}
+        isActive={filters?.sortBy === "Most Recent"}
+      ></ButtonTextGradient>
+      <ButtonTextGradient
+        onClick={() => handleOnClick("Lowest Price")}
+        value="Lowest Price"
+        isActive={filters?.sortBy === "Lowest Price"}
+      ></ButtonTextGradient>
+      <ButtonTextGradient
+        onClick={() => handleOnClick("Highest Price")}
+        value="Highest Price"
+        isActive={filters?.sortBy === "Highest Price"}
+      ></ButtonTextGradient>
+    </Box>
   );
 }

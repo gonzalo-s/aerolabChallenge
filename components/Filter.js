@@ -8,7 +8,6 @@ import {
   TriangleDownIcon,
   FilterMenuButtonWrapper,
 } from "../styles/styledComponents";
-
 import { useAppContext } from "./context";
 let useClickOutside = (handler) => {
   let domNode = useRef();
@@ -42,7 +41,7 @@ export default function Filter() {
     selectFilterBy(category);
   }
 
-  function handleOnMenuClick() {
+  function handleOnMenuClick() { 
     setDisplayMenu(!displayMenu);
   }
 

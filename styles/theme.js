@@ -28,26 +28,26 @@ export const theme = {
       l1: `
                 font-family: Montserrat;
                 font-size: 200px;
-                font-weight: black;
+                font-weight: 900;
                 line-height: 80%;
                 letter-spacing: 0%;
-                font-style: all-caps;
+                text-transform: uppercase;
                 `,
       l2: `
                 font-family: Montserrat;
                 font-size: 48px;
-                font-weight: black;
+                font-weight: 900;
                 line-height: 80%;
                 letter-spacing: 0%;
-                font-style: all-caps;
+                text-transform: uppercase;
                 `,
       l3: `
                 font-family: Montserrat;
                 font-size: 32px;
-                font-weight: black;
+                font-weight: 900;
                 line-height: 100%;
                 letter-spacing: 0%;
-                font-style: all-caps;
+                text-transform: uppercase;
                 `,
     },
     desktopText: {
@@ -62,15 +62,15 @@ export const theme = {
       l1AllCaps: `
               font-family: Montserrat;
               font-size: 18px;
-              font-weight: semibold;
+              font-weight: 600;
               line-height: 150%;
               letter-spacing: 24%;
-              font-style: all-caps;
+              text-transform: uppercase;
               `,
       l1Light: `
               font-family: Montserrat;
               font-size: 18px;
-              font-weight: medium;
+              font-weight: 500;
               font-style: normal;
               letter-spacing: 0%;
               line-height: 150%;
@@ -86,10 +86,10 @@ export const theme = {
       l2AllCaps: `
             font-family: Montserrat;
             font-size: 14px;
-            font-weight: semibold;
+            font-weight: 600;
             line-height: 150%;
             letter-spacing: 5%;
-            font-style: all-caps;
+            text-transform: uppercase;
             `,
     },
   },
