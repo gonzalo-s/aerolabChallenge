@@ -19,15 +19,18 @@ export const Box = styled.div`
   align-items: ${({ alignItems }) => alignItems || "center"};
   justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
   pointer-events: ${({ pointerEvents }) => pointerEvents || ""};
-  border: ${({ border, theme }) =>
-    `${border} solid ${theme.colors.neutral200}`};
+  border: ${({ border }) => (border ? `solid` : "")};
+  border-width: ${({ border }) => border || ""};
+
+  border-color: ${({ borderColor, theme }) =>
+    theme.colors[borderColor] || theme.colors.neutral200};
   border-radius: ${({ radius }) => radius || ""};
   border-bottom: ${({ bb, theme }) =>
     bb ? `${bb} solid ${theme.colors.neutral200}` : ""};
   background-color: ${({ bg }) => bg || ""};
-  border-radius: ${({ radius }) => radius || ""};
   transform: ${({ rotate }) => `rotate(${rotate})` || "rotate(0deg)"};
   overflow: ${({ overflow }) => overflow || ""};
+  z-index: ${({ zIndex }) => zIndex || ""};
 `;
 export const Button = styled.button`
   cursor: pointer;

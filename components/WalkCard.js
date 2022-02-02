@@ -10,7 +10,8 @@ function WalkCard({
   heading,
   description,
   rotate,
-  overflow,
+  m,
+  zIndex,
 }) {
   return (
     <Box
@@ -19,13 +20,15 @@ function WalkCard({
       p="0.75rem"
       radius="2rem"
       border="1px"
+      borderColor="neutral300"
       direction="column"
       rotate={rotate}
       bg="white"
-      overflow={overflow}
+      m={m}
+      zIndex={zIndex}
     >
       <Box direction="column" radius="2rem" h="31.125rem" border="1px">
-        <BgGradient radius="2rem 2rem 0 0">
+        <BgGradient bgGradient="speciallIllustrationBg" radius="2rem 2rem 0 0">
           <Image src={src} alt={alt} />
         </BgGradient>
         <Box

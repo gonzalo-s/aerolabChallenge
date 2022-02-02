@@ -71,7 +71,7 @@ function AddBalance({ addPoints, isLoading }) {
           pointerEvents="none"
           p="1rem"
         >
-          <LogoGrad width="32px" height="32px" viewBox="0 0 256 256" />
+          <LogoGrad width="32px" height="32px" viewBox="0 0 260 260" />
           <StyledDesktTextGrad w="3.75rem" h="100%">
             {isLoading ? "----" : userData?.points}
           </StyledDesktTextGrad>
