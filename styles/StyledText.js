@@ -37,6 +37,8 @@ export const StyledTitle = styled.div`
       : theme.textStyles.desktopTitles.l1}
   width: ${({ w }) => w || "50%"};
   height: ${({ h }) => h || "auto"};
+  color: ${({ theme, color }) =>
+    color ? theme.colors[color] : theme.colors.neutral900};
 `;
 export const StyledTitleGradient = styled.div`
   display: flex;
@@ -62,7 +64,7 @@ export const StyledDesktTextGrad = styled.div`
   align-items: center;
   justify-content: center;
   width: ${({ w }) => w || "100%"};
-  height: ${({ h }) => h || "auto"};
+  height: ${({ h }) => h || "100%"};
   ${({ theme }) => theme.textStyles.desktopText.l1}
   background-image: ${({ theme }) => theme.colors.brandDefault};
   background-size: 100%;

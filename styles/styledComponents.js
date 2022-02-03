@@ -1,8 +1,10 @@
+import Image from "next/image";
 import styled from "styled-components";
 import { TriangleDown, ChevronDown, ChevronUp } from "@styled-icons/entypo";
 //import WavePatternSvg from "../assets/wavePattern.svg";
 
 export const Box = styled.div`
+  box-sizing: border-box;
   display: ${({ display }) => display || "flex"};
   gap: ${({ gap }) => gap || ""};
   position: ${({ position }) => position || ""};
@@ -21,7 +23,6 @@ export const Box = styled.div`
   pointer-events: ${({ pointerEvents }) => pointerEvents || ""};
   border: ${({ border }) => (border ? `solid` : "")};
   border-width: ${({ border }) => border || ""};
-
   border-color: ${({ borderColor, theme }) =>
     theme.colors[borderColor] || theme.colors.neutral200};
   border-radius: ${({ radius }) => radius || ""};
@@ -114,10 +115,6 @@ export const BalanceMenuWrapper = styled(Box)`
   box-shadow: 0 0 8px ${({ theme }) => theme.colors.neutral200};
 `;
 
-export const FilterSortWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 export const FilterWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -168,13 +165,12 @@ export const FilterItem = styled.li`
   padding-left: 2rem;
   color: ${({ theme }) => theme.colors.neutral600};
 `;
-
 export const GalleryWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 
-export const ItemWrapper = styled.div`
+export const GalleryItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -184,7 +180,14 @@ export const ItemWrapper = styled.div`
   height: 506px;
 `;
 
-export const GallImg = styled.img``;
+export const GallImgContainer = styled.div`
+  position: relative;
+  display: ${({ display }) => display || ""};
+  width: ${({ w }) => w || "21.75rem"};
+  height: ${({ h }) => h || "21.558rem"};
+  padding: ${({ p }) => p || ""};
+  background-color: ${({ bg }) => bg || ""};
+`;
 
 export const ImgContainer = styled.div`
   display: flex;

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Gallery from "../pages/Gallery";
-import Filter from "../components/Filter";
-import Sort from "../components/Sort";
-import { FilterSortWrapper } from "../styles/styledComponents";
+
+import { Box } from "../styles/styledComponents";
 import { useAppContext } from "../components/context";
 import Navbar from "../components/Navbar";
 import TechZone from "./TechZone";
@@ -137,24 +136,19 @@ export default function Home() {
         <title>Challenge</title>
         <link rel="icon" href={"/favicon.ico"} />
       </Head>
-      <main>
-        <Navbar addPoints={addPoints} isLoading={isLoading} />
-        <TechZone />
-        <Walkthrough />
-        <FilterSortWrapper>
-          <Filter />
-          <Sort />
-        </FilterSortWrapper>
-        {items ? (
-          <Gallery
-            // items={items}
-            points={userData?.points}
-            redeemItem={redeemItem}
-          />
-        ) : (
-          ""
-        )}
-      </main>
+      <Box direction="column">
+        <main>
+          <Navbar addPoints={addPoints} isLoading={isLoading} />
+          <TechZone />
+          <Walkthrough />
+
+          {items ? (
+            <Gallery points={userData?.points} redeemItem={redeemItem} />
+          ) : (
+            ""
+          )}
+        </main>
+      </Box>
       <footer>Footer</footer>
     </div>
   );

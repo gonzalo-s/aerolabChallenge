@@ -8,6 +8,7 @@ import {
   TriangleDownIcon,
   FilterMenuButtonWrapper,
 } from "../styles/styledComponents";
+import { StyledDesktText } from "../styles/StyledText";
 import { useAppContext } from "./context";
 let useClickOutside = (handler) => {
   let domNode = useRef();
@@ -36,12 +37,10 @@ export default function Filter() {
   const categoriesList = categories();
 
   function handleOnItemClick(category) {
-    console.log("category handleOnClick: ", category);
     setDisplayMenu(false);
     selectFilterBy(category);
   }
-
-  function handleOnMenuClick() { 
+  function handleOnMenuClick() {
     setDisplayMenu(!displayMenu);
   }
 
@@ -52,7 +51,9 @@ export default function Filter() {
   return (
     <FilterWrapper ref={domNode}>
       <FilterMenuButtonWrapper>
-        Filter By:
+        <StyledDesktText color="neutral600" w="auto">
+          Filter By:
+        </StyledDesktText>
         <FilterMenuButton onClick={handleOnMenuClick}>
           {filters.filterBy}
           <TriangleDownIcon />
@@ -69,6 +70,7 @@ export default function Filter() {
             All Products
           </FilterItem>
           {categoriesList.map((category, id) => {
+            console.log(category);
             return (
               <FilterItem
                 key={id}
