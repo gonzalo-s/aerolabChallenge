@@ -5,12 +5,13 @@ import { TriangleDown, ChevronDown, ChevronUp } from "@styled-icons/entypo";
 
 export const Box = styled.div`
   box-sizing: border-box;
+  flex-wrap: ${({ wrap }) => wrap || ""};
   display: ${({ display }) => display || "flex"};
   gap: ${({ gap }) => gap || ""};
   position: ${({ position }) => position || ""};
   width: ${({ w }) => w || "100%"};
-  max-width: ${({ maxW }) => maxW || ""};
   height: ${({ h }) => h || "100%"};
+  max-width: ${({ maxW }) => maxW || ""};
   padding: ${({ p }) => p || ""};
   margin: ${({ m }) => m || ""};
   left: ${({ left }) => left || ""};
@@ -29,12 +30,14 @@ export const Box = styled.div`
   border-bottom: ${({ bb, theme }) =>
     bb ? `${bb} solid ${theme.colors.neutral200}` : ""};
   background-color: ${({ bg }) => bg || ""};
+  background-color: ${({ bgTheme, theme }) => theme.colors[bgTheme] || ""};
   transform: ${({ rotate }) => `rotate(${rotate})` || "rotate(0deg)"};
   overflow: ${({ overflow }) => overflow || ""};
   z-index: ${({ zIndex }) => zIndex || ""};
 `;
 export const Button = styled.button`
   cursor: pointer;
+  display: flex;
   width: ${({ w }) => w || "100%"};
   height: ${({ h }) => h || "2rem"};
   padding: ${({ p }) => p || ""};
@@ -44,7 +47,6 @@ export const Button = styled.button`
   bottom: ${({ bottom }) => bottom || ""};
   border-radius: ${({ radius }) => radius || "1rem"};
   gap: ${({ gap }) => gap || ""};
-  display: flex;
   align-items: ${({ alignItems }) => alignItems || "center"};
   justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
   background: ${({ isActive, theme }) =>
@@ -80,6 +82,7 @@ export const ChevronDownIcon = styled(ChevronDown)`
   height: ${({ h }) => h || ""};
   color: ${({ theme }) => theme.colors.neutral500};
 `;
+
 export const ChevronUpIcon = styled(ChevronUp)`
   width: ${({ w }) => w || ""};
   height: ${({ h }) => h || ""};
@@ -115,44 +118,26 @@ export const BalanceMenuWrapper = styled(Box)`
   box-shadow: 0 0 8px ${({ theme }) => theme.colors.neutral200};
 `;
 
-export const FilterWrapper = styled.div`
+export const FilterWrapper = styled(Box)`
   display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  width: 20rem;
-  height: 4rem;
-  background-color: green;
+  position: relative;
+  border-right: ${({ borderRight, theme }) =>
+    `${borderRight} solid ${theme.colors.neutral300}`};
 `;
-export const FilterMenuButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: red;
-`;
+
 export const FilterMenuButton = styled.button`
   cursor: pointer;
   display: flex;
-  align-items: center;
-  position: relative;
+  align-items: ${({ alignItems }) => alignItems || "center"};
+  padding: ${({ p }) => p || ""};
+  justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
+  width: ${({ w }) => w || "100%"};
+  height: ${({ h }) => h || "100%"};
+  border-radius: ${({ radius }) => radius || "1rem"};
   ${({ theme }) => theme.textStyles.desktopText.l1};
-  border-radius: 16px;
-  justify-content: space-between;
   color: ${({ theme }) => theme.colors.neutral600};
   border: 1px solid ${({ theme }) => theme.colors.neutral200};
   background-color: ${({ theme }) => theme.colors.neutral0};
-`;
-
-export const FilterMenuWrapper = styled.div`
-  flex-direction: column;
-  position: absolute;
-  top: 6rem;
-  left: 6rem;
-  border-radius: 16px;
-  border: 1px solid ${({ theme }) => theme.colors.neutral200};
-  background-color: ${({ theme }) => theme.colors.neutral0};
-  z-index: 999;
 `;
 
 export const FilterItem = styled.li`
@@ -160,10 +145,13 @@ export const FilterItem = styled.li`
   display: flex;
   align-items: center;
   ${({ theme }) => theme.textStyles.desktopText.l1};
-  height: 59px;
-  width: 12rem;
+  width: ${({ w }) => w || "100%"};
+  height: ${({ h }) => h || "100%"};
   padding-left: 2rem;
   color: ${({ theme }) => theme.colors.neutral600};
+  :hover {
+    background-color: ${({ theme }) => theme.colors.neutral100};
+  }
 `;
 export const GalleryWrapper = styled.div`
   display: flex;

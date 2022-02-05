@@ -28,6 +28,7 @@ export const StyledDesktText = styled.div`
   height: ${({ h }) => h || "auto"};
   color: ${({ theme, color }) =>
     color ? theme.colors[color] : theme.colors.neutral100};
+  padding: ${({ p }) => p || ""};
 `;
 
 export const StyledTitle = styled.div`
@@ -39,6 +40,7 @@ export const StyledTitle = styled.div`
   height: ${({ h }) => h || "auto"};
   color: ${({ theme, color }) =>
     color ? theme.colors[color] : theme.colors.neutral900};
+  padding: ${({ p }) => p || ""};
 `;
 export const StyledTitleGradient = styled.div`
   display: flex;
@@ -65,6 +67,7 @@ export const StyledDesktTextGrad = styled.div`
   justify-content: center;
   width: ${({ w }) => w || "100%"};
   height: ${({ h }) => h || "100%"};
+  padding: ${({ p }) => p || ""};
   ${({ theme }) => theme.textStyles.desktopText.l1}
   background-image: ${({ theme }) => theme.colors.brandDefault};
   background-size: 100%;
