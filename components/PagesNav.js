@@ -1,14 +1,20 @@
 import React from "react";
-import { Box, Button } from "../styles/styledComponents";
+import { Box } from "../styles/styledComponents";
 import { StyledDesktText, StyledDesktTextGrad } from "../styles/StyledText";
 import ChevronButton from "./ChevronButton";
+import { useAppContext } from "./context";
 
 export default function PagesNav() {
-  let actualPage = 1;
-  let totalPages = 2;
+  const { actualPageIdx, selectPage, pages } = useAppContext();
 
-  function handleOnClick(arrow) {
-    console.log(arrow);
+  let totalPages = pages?.length;
+  function prevPage() {
+    if (actualPageIdx === 0) return;
+    selectPage(actualPageIdx - 1);
+  }
+  function nextPage() {
+    if (actualPageIdx === totalPages - 1) return;
+    selectPage(actualPageIdx + 1);
   }
 
   return (
@@ -21,22 +27,22 @@ export default function PagesNav() {
       alignItems="center"
     >
       <ChevronButton
-        onClick={() => handleOnClick("left")}
+        onClick={() => prevPage()}
         arrowLR="left"
-        isActive={false}
+        isActive={actualPageIdx > 0}
       />
       <Box w="auto">
         <StyledDesktText color="neutral600" w="auto" p="0 0.5rem 0 0">
           Page
         </StyledDesktText>
         <StyledDesktTextGrad w="auto">
-          {`${actualPage} of ${totalPages}`}
+          {`${actualPageIdx + 1} of ${totalPages}`}
         </StyledDesktTextGrad>
       </Box>
       <ChevronButton
-        onClick={() => handleOnClick("right")}
+        onClick={() => nextPage()}
         arrowLR="right"
-        isActive={true}
+        isActive={actualPageIdx + 1 < totalPages}
       />
     </Box>
   );

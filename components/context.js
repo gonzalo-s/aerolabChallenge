@@ -9,17 +9,20 @@ export function AppContextProvider({ children }) {
   const [items, setItems] = useState(null);
   const [userData, setUserData] = useState(null);
   const [filteredItems, setFilteredItems] = useState(null);
+  const [pages, setPages] = useState(null);
+  const [actualPageIdx, setActualPageIdx] = useState(0);
+
   const [filters, setFilters] = useState({
-    filterBy: null,
+    filterBy: null, // category
     sortBy: "Most Recent", // Most Recent | Lowest Price | Higher Price
   });
-  const [isSorted, setIsSorted] = useState(false);
+  const [isSorted, setIsSorted] = useState(true);
 
-  //   console.log("--items: ", items);
-  //   console.log("--filteredItems: ", filteredItems);
-  //   console.log("--filters: ", filters);
-  //   console.log("--isSorted: ", isSorted);
-
+  // console.log("--items: ", items);
+  // console.log("--filteredItems: ", filteredItems);
+  // console.log("--filters: ", filters);
+  // console.log("--isSorted: ", isSorted);
+  // console.log("--userData: ", userData);
   function categories() {
     let newCategories = [];
     items?.map((item) => {
@@ -30,9 +33,14 @@ export function AppContextProvider({ children }) {
     return newCategories;
   }
 
+  function selectPage(pageNumber) {
+    setActualPageIdx(parseInt(pageNumber));
+  }
+
   function selectSortBy(value) {
     let newFilters = JSON.parse(JSON.stringify(filters));
     newFilters.sortBy = value;
+    setActualPageIdx(0);
     setIsSorted(false);
     setFilters(newFilters);
   }
@@ -41,12 +49,35 @@ export function AppContextProvider({ children }) {
     (category) => {
       let newFilters = JSON.parse(JSON.stringify(filters));
       newFilters.filterBy = category;
+      newFilters.sortBy = "Most Recent"; //default
+      setActualPageIdx(0);
       setFilters(newFilters);
     },
     [filters]
   );
+  const paginate = useCallback(
+    (itemsArr) => {
+      console.log("itemsArr: ", itemsArr);
+      let itemsPerPage = 16;
+      let paginatedItems = [];
+      let itemsArrMaxIdx = itemsArr.length - 1;
+      let start = 0;
+      if (itemsArr.length <= itemsPerPage)
+        return paginatedItems.push(itemsArr), setPages(paginatedItems);
+      function loop() {
+        if (start >= itemsArrMaxIdx) return;
+        const newPage = itemsArr.slice(start, start + itemsPerPage);
+        paginatedItems.push(newPage);
+        start += itemsPerPage;
+        loop();
+      }
+      loop();
+      return setPages(paginatedItems);
+    },
+    [setPages]
+  );
 
-  const sortItems = useCallback(
+  const sortItemsPaginateSetActualPage = useCallback(
     (sortBy) => {
       let filteredItemsSorted = JSON.parse(JSON.stringify(filteredItems));
       if (sortBy === "Most Recent") {
@@ -57,50 +88,40 @@ export function AppContextProvider({ children }) {
         filteredItemsSorted.sort((a, b) => b.cost - a.cost);
       }
       setIsSorted(true);
-      return setFilteredItems(filteredItemsSorted);
+      setFilteredItems(filteredItemsSorted);
+      paginate(filteredItemsSorted);
+      setActualPageIdx(0);
     },
-    [filteredItems]
+    [filteredItems, paginate]
   );
 
   useEffect(() => {
-    if (items === null) {
-      console.log("items === null");
-      return;
-    } else {
-      console.log("useEffect");
-      function filterByCategory(category) {
-        let newFilteredItems = null;
-        if (category !== "All Products") {
-          newFilteredItems = [];
-          items?.map((item) => {
-            if (item.category === category) {
-              newFilteredItems.push(item);
-            }
-          });
-        } else if (category === "All Products") {
-          console.log("items in useEffect if: ", items);
-          return setFilteredItems(items);
-        }
-        return setFilteredItems(newFilteredItems);
-      }
-
-      if (filters.filterBy !== null) {
-        filterByCategory(filters.filterBy);
-      } else {
-        selectFilterBy("All Products");
+    // filters items by category change, on load it defaults to "all products"
+    if (items === null) return;
+    if (filters.filterBy === null) return selectFilterBy("All Products");
+    console.log("1 useEffect");
+    //filter by category
+    function filterByCategory(category) {
+      if (category === "All Products") {
         setFilteredItems(items);
+      } else {
+        let newFilteredItems = items.filter(
+          (item) => category === item.category
+        );
+        setFilteredItems(newFilteredItems);
       }
     }
+    setIsSorted(false);
+    filterByCategory(filters.filterBy);
+
+    //sortItemsPaginateSetActualPage
   }, [filters, items, selectFilterBy]);
 
   useEffect(() => {
-    if (!isSorted) {
-      if (filteredItems !== null) {
-        sortItems(filters.sortBy);
-      }
-    }
-  }, [filters, sortItems, filteredItems, isSorted]);
-
+    if (isSorted) return;
+    console.log("2 useEffect");
+    sortItemsPaginateSetActualPage(filters.sortBy);
+  }, [filters, isSorted, sortItemsPaginateSetActualPage]);
   return (
     <AppContext.Provider
       value={{
@@ -110,9 +131,12 @@ export function AppContextProvider({ children }) {
         setUserData,
         categories,
         selectFilterBy,
-        filteredItems,
+        // filteredItems,
         selectSortBy,
         filters,
+        pages,
+        selectPage,
+        actualPageIdx,
       }}
     >
       {children}

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Gallery from "../pages/Gallery";
-
 import { Box } from "../styles/styledComponents";
 import { useAppContext } from "../components/context";
 import Navbar from "../components/Navbar";
 import TechZone from "./TechZone";
 import Walkthrough from "./Walktrough";
+import Footer from "../components/Footer";
 const axios = require("axios");
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isDataUpdated, setIsDataUpdated] = useState(false);
 
-  const { items, setItems, userData, setUserData } = useAppContext();
+  const { items, setItems, setUserData } = useAppContext();
 
   function postUserPoints(amount) {
     return axios.post(
@@ -143,13 +143,13 @@ export default function Home() {
           <Walkthrough />
 
           {items ? (
-            <Gallery points={userData?.points} redeemItem={redeemItem} />
+            <Gallery redeemItem={redeemItem} isLoading={isLoading} />
           ) : (
             ""
           )}
         </main>
       </Box>
-      <footer>Footer</footer>
+      <Footer>Footer</Footer>
     </div>
   );
 }

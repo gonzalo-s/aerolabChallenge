@@ -1,24 +1,53 @@
-import Image from "next/image";
+import React from "react";
+import { Box } from "../styles/styledComponents";
 import {
-  Box,
-  GalleryItemWrapper,
-  GallImgContainer,
-} from "../styles/styledComponents";
-import { StyledTitleGradient, StyledTitle } from "../styles/StyledText";
+  StyledTitleGradient,
+  StyledTitle,
+  StyledDesktText,
+  StyledDesktTextGrad,
+} from "../styles/StyledText";
 import { useAppContext } from "../components/context";
 import Filter from "../components/Filter";
 import Sort from "../components/Sort";
 import PagesNav from "../components/PagesNav";
+import GalleryItem from "../components/GalleryItem";
 
-export default function Gallery({ points, redeemItem }) {
-  const { items, filteredItems } = useAppContext();
+export default function Gallery({ redeemItem, isLoading }) {
+  const { items, pages, actualPageIdx } = useAppContext();
 
-  function handleOnClick(itemId) {
-    redeemItem(itemId);
-  }
+  //console.log("items in gallery: ", items);
+  //console.log("pages in gallery: ", pages);
+  //console.log("actualPageIdx in gallery: ", actualPageIdx);
+
+  let shownProducts = () => {
+    if (pages === null) return;
+    let count = 0;
+    let totalPages = pages?.length;
+    if (totalPages === 1) return (count = pages[actualPageIdx]?.length);
+    count = actualPageIdx * 16 + pages[actualPageIdx]?.length;
+    return count;
+  };
+
+  //let shownProducts = pages !== null ? pages[actualPageIdx]?.length : "";
+
+  let totalProducts = () => {
+    let count = 0;
+    pages.map((page) => {
+      page.map(() => {
+        count++;
+      });
+    });
+
+    return count;
+  };
 
   return (
-    <Box direction="column" alignItems="center" p="10rem 14.25rem 0 14.25rem">
+    <Box
+      className="gallery"
+      direction="column"
+      alignItems="center"
+      p="10rem 14.25rem 0 14.25rem"
+    >
       <Box
         className="techProductsTitle"
         justifyContent="flex-start"
@@ -36,32 +65,38 @@ export default function Gallery({ points, redeemItem }) {
         <Sort />
         <PagesNav />
       </Box>
-      <Box w="100%" wrap="wrap" p="4rem 0 0 0" justifyContent="space-around">
-        {filteredItems?.map((item) => {
-          return (
-            <GalleryItemWrapper key={item._id}>
-              <GallImgContainer p="2rem" w="21.75rem" h="21.558rem" bg="green">
-                <Image
-                  src={item.img.url}
-                  alt={item.name}
-                  layout="fill"
-                  objectFit="contain"
+      <Box
+        w="91.5rem"
+        wrap="wrap"
+        p="4rem 0 0 0"
+        justifyContent="space-between"
+      >
+        {pages !== null
+          ? pages[actualPageIdx].map((item, id) => {
+              return (
+                <GalleryItem
+                  item={item}
+                  key={id}
+                  redeemItem={redeemItem}
+                  isLoading={isLoading}
                 />
-              </GallImgContainer>
-              <div className="itemName">{item.name}</div>
-              <div className="itemCategory">{item.category}</div>
-              <button
-                disabled={points < item.cost ? true : false}
-                className="itemButton"
-                onClick={() => {
-                  handleOnClick(item._id);
-                }}
-              >
-                {item.cost}
-              </button>
-            </GalleryItemWrapper>
-          );
-        })}
+              );
+            })
+          : ""}
+      </Box>
+      <Box justifyContent="space-between" p="4rem 0 0 0">
+        <Box w="16.188rem" />
+        <Box w="auto">
+          <StyledDesktTextGrad w="auto">
+            {shownProducts() > 0
+              ? `${shownProducts()} of ${totalProducts()} `
+              : ""}
+          </StyledDesktTextGrad>
+          <StyledDesktText color="neutral600" w="auto" p="0 0 0 0.5rem">
+            products
+          </StyledDesktText>
+        </Box>
+        <PagesNav />
       </Box>
     </Box>
   );

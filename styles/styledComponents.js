@@ -29,11 +29,15 @@ export const Box = styled.div`
   border-radius: ${({ radius }) => radius || ""};
   border-bottom: ${({ bb, theme }) =>
     bb ? `${bb} solid ${theme.colors.neutral200}` : ""};
+  border-top: ${({ bt, theme }) =>
+    bt ? `${bt} solid ${theme.colors.neutral300}` : ""};
   background-color: ${({ bg }) => bg || ""};
   background-color: ${({ bgTheme, theme }) => theme.colors[bgTheme] || ""};
   transform: ${({ rotate }) => `rotate(${rotate})` || "rotate(0deg)"};
   overflow: ${({ overflow }) => overflow || ""};
   z-index: ${({ zIndex }) => zIndex || ""};
+  box-shadow: ${({ theme, boxShadow }) =>
+    boxShadow ? `0 0 7px ${theme.colors.neutral200}` : ""};
 `;
 export const Button = styled.button`
   cursor: pointer;
@@ -63,6 +67,7 @@ export const BgGradient = styled(Box)`
   background: ${({ bgGradient, theme }) =>
     bgGradient ? theme.colors[bgGradient] : theme.colors.brandDefault};
   border: none;
+  cursor: ${({ cursor }) => cursor || ""};
 `;
 
 export const Wrapper = styled(Box)``;
@@ -171,6 +176,8 @@ export const GalleryItemWrapper = styled.div`
 export const GallImgContainer = styled.div`
   position: relative;
   display: ${({ display }) => display || ""};
+  justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
+  align-items: ${({ alignItems }) => alignItems || "stretch"};
   width: ${({ w }) => w || "21.75rem"};
   height: ${({ h }) => h || "21.558rem"};
   padding: ${({ p }) => p || ""};
@@ -192,4 +199,8 @@ export const ImgContainer = styled.div`
 
 export const WavePattern = styled(Box)`
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0dGVybiBpZD0icGF0dGVybi13YXZlcyIgeD0iMCIgeT0iMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjU2NiIgaGVpZ2h0PSIyNyIgdmlld0JveD0iMCAwIDU2NiAyNyI+CjxwYXRoIGlkPSd3YXZlJyBkPSJNMSAxMy41QzMyLjMzMzMgLTMuMTY2NjcgNjMuNjY2NyAtMy4xNjY2NyA5NSAxMy41QzEyNi4zMzMgMzAuMTY2NyAxNTcuNjY3IDMwLjE2NjcgMTg5IDEzLjVDMjIwLjMzMyAtMy4xNjY2NyAyNTEuNjY3IC0zLjE2NjY3IDI4MyAxMy41QzMxNC4zMzMgMzAuMTY2NyAzNDUuNjY3IDMwLjE2NjcgMzc3IDEzLjVDNDA4LjMzMyAtMy4xNjY2NyA0MzkuNjY3IC0zLjE2NjY3IDQ3MSAxMy41QzUwMi4zMzMgMzAuMTY2NyA1MzMuNjY3IDMwLjE2NjcgNTY1IDEzLjUiIHN0cm9rZT0iI0Y1RjlGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjwvcGF0dGVybj4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuLXdhdmVzKSI+PC9yZWN0Pgo8L3N2Zz4KCg==");
+`;
+
+export const A = styled.a`
+  text-decoration: none;
 `;
