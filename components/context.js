@@ -57,7 +57,7 @@ export function AppContextProvider({ children }) {
   );
   const paginate = useCallback(
     (itemsArr) => {
-      console.log("itemsArr: ", itemsArr);
+      //console.log("itemsArr: ", itemsArr);
       let itemsPerPage = 16;
       let paginatedItems = [];
       let itemsArrMaxIdx = itemsArr.length - 1;
@@ -99,7 +99,6 @@ export function AppContextProvider({ children }) {
     // filters items by category change, on load it defaults to "all products"
     if (items === null) return;
     if (filters.filterBy === null) return selectFilterBy("All Products");
-    console.log("1 useEffect");
     //filter by category
     function filterByCategory(category) {
       if (category === "All Products") {
@@ -119,7 +118,7 @@ export function AppContextProvider({ children }) {
 
   useEffect(() => {
     if (isSorted) return;
-    console.log("2 useEffect");
+    //console.log("2 useEffect");
     sortItemsPaginateSetActualPage(filters.sortBy);
   }, [filters, isSorted, sortItemsPaginateSetActualPage]);
   return (

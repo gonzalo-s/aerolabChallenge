@@ -6,7 +6,6 @@ import {
 import {
   BgGradient,
   Box,
-  Button,
   ImgContainer,
   WavePattern,
 } from "../styles/styledComponents";
@@ -15,9 +14,6 @@ import HeroImage from "../assets/heroImage912.png";
 import Image from "next/image";
 import { Link } from "react-scroll";
 export default function TechZone() {
-  function handleOnGoToProductsClick() {
-    console.log("clicked");
-  }
   return (
     <WavePattern
       className="techZoneWrapper"
@@ -89,19 +85,6 @@ export default function TechZone() {
               </Box>
             </BgGradient>
           </Link>
-          {/* <Button
-            isActive={true}
-            onClick={handleOnGoToProductsClick}
-            w="19.875rem"
-            h="5rem"
-            justifyContent="center"
-            alignItems="center"
-          >
-            VIEW ALL PRODUCTS
-            <Box w="2rem" h="2rem" justifyContent="center" alignItems="center">
-              <ArrowDown />
-            </Box>
-          </Button> */}
         </Box>
       </Box>
 
@@ -121,12 +104,7 @@ export default function TechZone() {
           justifyContent="flex-end"
           bottom="6.5rem"
         >
-          <ImgContainer
-            position="absolute"
-            w="100%"
-            h="115%"
-            //bg="green"
-          >
+          <ImgContainer position="absolute" w="100%" h="115%">
             <Image src={HeroImage} alt="tech zone hero image" />
           </ImgContainer>
         </BgGradient>
