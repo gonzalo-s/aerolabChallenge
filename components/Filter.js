@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
 import {
   Box,
   FilterItem,
@@ -9,32 +8,15 @@ import {
 } from "../styles/styledComponents";
 import { StyledDesktText } from "../styles/StyledText";
 import { useAppContext } from "./context";
-let useClickOutside = (handler) => {
-  let domNode = useRef();
-
-  useEffect(() => {
-    let maybeHandler = (event) => {
-      if (!domNode.current.contains(event.target)) {
-        handler();
-      }
-    };
-
-    document.addEventListener("mousedown", maybeHandler);
-
-    return () => {
-      document.removeEventListener("mousedown", maybeHandler);
-    };
-  });
-
-  return domNode;
-};
+import useOnClickOutside from "./useOnClickOutside";
 
 export default function Filter() {
   const { filters, categories, selectFilterBy } = useAppContext();
   const [displayMenu, setDisplayMenu] = useState(false);
+  const ref = useRef();
+  useOnClickOutside(ref, () => setDisplayMenu(false));
 
   const categoriesList = categories();
-
   function handleOnItemClick(category) {
     setDisplayMenu(false);
     selectFilterBy(category);
@@ -43,12 +25,8 @@ export default function Filter() {
     setDisplayMenu(!displayMenu);
   }
 
-  let domNode = useClickOutside(() => {
-    setDisplayMenu(false);
-  });
-
   return (
-    <FilterWrapper ref={domNode} w="24.563rem" h="100%" borderRight="1px">
+    <FilterWrapper ref={ref} w="24.563rem" h="100%" borderRight="1px">
       <Box className="textAndButtonWrapper" justifyContent="flex-start">
         <StyledDesktText p="0 1rem 0 0" color="neutral600" w="auto">
           Filter by:

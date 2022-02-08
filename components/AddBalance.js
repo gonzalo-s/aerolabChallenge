@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   Button,
   Box,
@@ -15,35 +15,18 @@ import Image from "next/image";
 import LogoInvert from "../assets/logoGradInvert.svg";
 import LogoGrad from "../assets/logoGrad.svg";
 import ButtonWithTextGradient from "./ButtonWithTextGradient";
+import useOnClickOutside from "./useOnClickOutside";
 
 function AddBalance({ addPoints, isLoading }) {
   const { userData } = useAppContext();
   const [pointsToAdd, setPointsToAdd] = useState(1000);
   const [displayMenu, setDisplayMenu] = useState(false);
+  const ref = useRef();
+  useOnClickOutside(ref, () => setDisplayMenu(false));
 
   function addNewPoints() {
     addPoints(pointsToAdd);
   }
-
-  let useClickOutside = (handler) => {
-    let domNode = useRef();
-    useEffect(() => {
-      let maybeHandler = (event) => {
-        if (!domNode.current.contains(event.target)) {
-          handler();
-        }
-      };
-      document.addEventListener("mousedown", maybeHandler);
-      return () => {
-        document.removeEventListener("mousedown", maybeHandler);
-      };
-    });
-    return domNode;
-  };
-
-  let domNode = useClickOutside(() => {
-    setDisplayMenu(false);
-  });
 
   return (
     <Wrapper
@@ -53,7 +36,7 @@ function AddBalance({ addPoints, isLoading }) {
       w="10.75rem"
       h="3rem"
       position="relative"
-      ref={domNode}
+      ref={ref}
     >
       <Box
         className="buttonAndImageWrapper"
