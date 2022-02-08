@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Gallery from "../pages/Gallery";
+import Gallery from "../components/Gallery";
 import { Box } from "../styles/styledComponents";
 import { useAppContext } from "../components/context";
 import Navbar from "../components/Navbar";
-import TechZone from "./TechZone";
-import Walkthrough from "./Walktrough";
+import TechZone from "../components/TechZone";
+import Walkthrough from "../components/Walktrough";
 import Footer from "../components/Footer";
 const axios = require("axios");
 

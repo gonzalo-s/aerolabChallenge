@@ -6,11 +6,11 @@ import {
   StyledDesktText,
   StyledDesktTextGrad,
 } from "../styles/StyledText";
-import { useAppContext } from "../components/context";
-import Filter from "../components/Filter";
-import Sort from "../components/Sort";
-import PagesNav from "../components/PagesNav";
-import GalleryItem from "../components/GalleryItem";
+import { useAppContext } from "./context";
+import Filter from "./Filter";
+import Sort from "./Sort";
+import PagesNav from "./PagesNav";
+import GalleryItem from "./GalleryItem";
 
 export default function Gallery({ redeemItem, isLoading }) {
   const { items, pages, actualPageIdx } = useAppContext();
