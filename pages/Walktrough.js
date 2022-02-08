@@ -1,5 +1,4 @@
 import { Box, BgGradient, WavePattern } from "../styles/styledComponents";
-import { StyledDesktTextGrad } from "../styles/StyledText";
 import WalkCard from "../components/WalkCard";
 import workingPerson from "../assets/walkthrough/workingPerson.png";
 import rocketMan from "../assets/walkthrough/rocketMan.png";
@@ -10,7 +9,7 @@ import stars from "../assets/icons/stars.png";
 //src, alt, icon, iconAlt, heading, description, rotate
 function Walkthrough() {
   return (
-    <Box alignItems="center" h="45.063rem">
+    <Box alignItems="center" h="45.063rem" w="120rem">
       <WavePattern>
         <BgGradient
           className="cardsWrapper"

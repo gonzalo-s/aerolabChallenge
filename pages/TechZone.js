@@ -13,8 +13,9 @@ import {
 import ArrowDown from "../assets/arrowDown.svg";
 import HeroImage from "../assets/heroImage912.png";
 import Image from "next/image";
+import { Link } from "react-scroll";
 export default function TechZone() {
-  function handleOnClick() {
+  function handleOnGoToProductsClick() {
     console.log("clicked");
   }
   return (
@@ -62,9 +63,35 @@ export default function TechZone() {
           justifyContent="flex-end"
           alignItems="flex-start"
         >
-          <Button
+          <Link
+            to="gallery"
+            spy={true}
+            smooth={true}
+            offset={50}
+            duration={600}
+            delay={0}
+          >
+            <BgGradient
+              w="19.875rem"
+              h="5rem"
+              justifyContent="center"
+              alignItems="center"
+              cursor="pointer"
+            >
+              <StyledDesktText w="auto"> VIEW ALL PRODUCTS</StyledDesktText>
+              <Box
+                w="2rem"
+                h="2rem"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <ArrowDown />
+              </Box>
+            </BgGradient>
+          </Link>
+          {/* <Button
             isActive={true}
-            //onClick={addNewPoints}
+            onClick={handleOnGoToProductsClick}
             w="19.875rem"
             h="5rem"
             justifyContent="center"
@@ -74,13 +101,12 @@ export default function TechZone() {
             <Box w="2rem" h="2rem" justifyContent="center" alignItems="center">
               <ArrowDown />
             </Box>
-          </Button>
+          </Button> */}
         </Box>
       </Box>
 
       <Box
         className="techZoneImgWrapper"
-        //bg="red"
         direction="column"
         alignItems="flex-end"
         justifyContent="flex-end"

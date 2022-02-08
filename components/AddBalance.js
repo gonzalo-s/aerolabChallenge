@@ -61,8 +61,8 @@ function AddBalance({ addPoints, isLoading }) {
         w="10.75rem"
         h="3rem"
         alignItems="center"
-        position="relative"
         justifyContent="stretch"
+        position="relative"
       >
         <Box
           className="buttonVisualWrapper"
