@@ -10,7 +10,8 @@ export default function Footer() {
       direction="row"
       alignItems="center"
       justifyContent="center"
-      p="0 14.25rem"
+      w="100%"
+      m="auto"
       h="12.5rem"
     >
       <Link

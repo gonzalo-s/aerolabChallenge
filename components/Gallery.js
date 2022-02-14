@@ -15,10 +15,6 @@ import GalleryItem from "./GalleryItem";
 export default function Gallery({ redeemItem, isLoading }) {
   const { items, pages, actualPageIdx } = useAppContext();
 
-  //console.log("items in gallery: ", items);
-  //console.log("pages in gallery: ", pages);
-  //console.log("actualPageIdx in gallery: ", actualPageIdx);
-
   let shownProducts = () => {
     if (pages === null) return;
     let count = 0;
@@ -27,8 +23,6 @@ export default function Gallery({ redeemItem, isLoading }) {
     count = actualPageIdx * 16 + pages[actualPageIdx]?.length;
     return count;
   };
-
-  //let shownProducts = pages !== null ? pages[actualPageIdx]?.length : "";
 
   let totalProducts = () => {
     let count = 0;
@@ -46,7 +40,10 @@ export default function Gallery({ redeemItem, isLoading }) {
       className="gallery"
       direction="column"
       alignItems="center"
-      p="10rem 14.25rem 0 14.25rem"
+      //p="10rem 0 0 0"
+      maxW="76.25%"
+      w="100%"
+      m="auto"
     >
       <Box
         className="techProductsTitle"

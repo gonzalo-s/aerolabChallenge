@@ -92,5 +92,90 @@ export const theme = {
             text-transform: uppercase;
             `,
     },
+    mobileTitles: {
+      l1: `
+                font-family: Montserrat;
+                font-size: 96px;
+                font-weight: 900;
+                line-height: 80%;
+                letter-spacing: 0%;
+                text-transform: uppercase;
+                `,
+      l2: `
+                font-family: Montserrat;
+                font-size: 32px;
+                font-weight: 900;
+                line-height: 80%;
+                letter-spacing: 0%;
+                text-transform: uppercase;
+                `,
+      l3: `
+                font-family: Montserrat;
+                font-size: 24px;
+                font-weight: 900;
+                line-height: 100%;
+                letter-spacing: 0%;
+                text-transform: uppercase;
+                `,
+    },
+    mobileText: {
+      //default
+      l1: `
+                font-family: Montserrat;
+                font-size: 16px;
+                font-weight: 600;
+                font-style: normal;
+                letter-spacing: 0%;
+                line-height: 150%;
+                `,
+      //all caps
+      l1AllCaps: `
+              font-family: Montserrat;
+              font-size: 16px;
+              font-weight: 600;
+              line-height: 150%;
+              letter-spacing: 24%;
+              text-transform: uppercase;
+              `,
+      //light weight
+      l1Light: `
+              font-family: Montserrat;
+              font-size: 16px;
+              font-weight: 500;
+              font-style: normal;
+              letter-spacing: 0%;
+              line-height: 150%;
+              `,
+      //default
+      l2: `
+              font-family: Montserrat;
+              font-size: 12px;
+              font-weight: 600;
+              font-style: normal;
+              letter-spacing: 0%;
+              line-height: 150%;
+              `,
+      //all caps
+      l2AllCaps: `
+            font-family: Montserrat;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 150%;
+            letter-spacing: 5%;
+            text-transform: uppercase;
+            `,
+    },
   },
+};
+
+const sizes = {
+  mobile: "375px",
+  tablet: "1024px",
+  desktop: "1920px",
+};
+
+export const device = {
+  mobile: `(min-width: ${sizes.mobile})`,
+  tablet: `(min-width: ${sizes.tablet})`,
+  desktop: `(min-width: ${sizes.desktop})`,
 };

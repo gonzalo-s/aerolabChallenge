@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "./theme"; //mobile || tablet || desktop
 
 export const TextGradientResp = styled.div`
   display: flex;
@@ -30,6 +31,17 @@ export const StyledDesktText = styled.div`
     color ? theme.colors[color] : theme.colors.neutral100};
   padding: ${({ p }) => p || ""};
 `;
+export const TextL1AllCaps = styled.div`
+  ${({ theme }) => theme.textStyles.mobileText.l1AllCaps}
+  width: ${({ w }) => w || "100%"};
+  height: ${({ h }) => h || "auto"};
+  color: ${({ theme, color }) =>
+    color ? theme.colors[color] : theme.colors.neutral100};
+  padding: ${({ p }) => p || ""};
+  @media ${device.desktop} {
+    ${({ theme }) => theme.textStyles.desktopText.l1AllCaps}
+  }
+`;
 
 export const StyledTitle = styled.div`
   ${({ theme, styleType }) =>
@@ -42,17 +54,55 @@ export const StyledTitle = styled.div`
     color ? theme.colors[color] : theme.colors.neutral900};
   padding: ${({ p }) => p || ""};
 `;
+export const TitleL1Default = styled.div`
+  ${({ theme }) => theme.textStyles.mobileTitles.l1}
+  width: ${({ w }) => w || "50%"};
+  height: ${({ h }) => h || "auto"};
+  color: ${({ theme, color }) =>
+    color ? theme.colors[color] : theme.colors.neutral900};
+  padding: ${({ p }) => p || ""};
+  @media ${device.desktop} {
+    ${({ theme }) => theme.textStyles.desktopTitles.l1}
+  }
+`;
+export const TextL1Default = styled.div`
+  ${({ theme }) => theme.textStyles.mobileText.l1}
+  width: ${({ w }) => w || "50%"};
+  height: ${({ h }) => h || "auto"};
+  color: ${({ theme, color }) =>
+    color ? theme.colors[color] : theme.colors.neutral900};
+  padding: ${({ p }) => p || ""};
+  @media ${device.desktop} {
+    ${({ theme }) => theme.textStyles.desktopText.l1}
+  }
+`;
 export const StyledTitleGradient = styled.div`
+  ${({ theme }) => theme.textStyles.desktopTitles.l1}
+
   display: flex;
   align-items: center;
   justify-content: ${({ justifyContent }) => justifyContent || "center"};
   width: ${({ w }) => w || "100%"};
   height: ${({ h }) => h || "auto"};
   padding: ${({ p }) => p || ""};
-  ${({ theme, styleType }) =>
-    styleType
-      ? theme.textStyles.desktopTitles[styleType]
-      : theme.textStyles.desktopTitles.l1}
+  background-image: ${({ theme }) => theme.colors.brandDefault};
+  background-size: 100%;
+  ${` -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;`}
+`;
+export const TitleGradient = styled.div`
+  ${({ theme }) => theme.textStyles.mobileTitles.l1}
+  @media ${device.desktop} {
+    ${({ theme }) => theme.textStyles.desktopTitles.l1}
+  }
+  display: flex;
+  align-items: center;
+  justify-content: ${({ justifyContent }) => justifyContent || "center"};
+  width: ${({ w }) => w || "100%"};
+  height: ${({ h }) => h || "auto"};
+  padding: ${({ p }) => p || ""};
   background-image: ${({ theme }) => theme.colors.brandDefault};
   background-size: 100%;
   ${` -webkit-background-clip: text;

@@ -8,7 +8,9 @@ export default function Navbar({ addPoints, isLoading }) {
       className="navWrapper"
       direction="column"
       alignItems="center"
-      p="0 14.25rem"
+      maxW="76.25%"
+      w="100%"
+      m="auto"
       h="5.5rem"
     >
       <Box

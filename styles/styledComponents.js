@@ -1,7 +1,5 @@
-import Image from "next/image";
 import styled from "styled-components";
 import { TriangleDown, ChevronDown, ChevronUp } from "@styled-icons/entypo";
-//import WavePatternSvg from "../assets/wavePattern.svg";
 
 export const Box = styled.div`
   box-sizing: border-box;
@@ -12,6 +10,7 @@ export const Box = styled.div`
   width: ${({ w }) => w || "100%"};
   height: ${({ h }) => h || "100%"};
   max-width: ${({ maxW }) => maxW || ""};
+  min-width: ${({ minW }) => minW || ""};
   padding: ${({ p }) => p || ""};
   margin: ${({ m }) => m || ""};
   left: ${({ left }) => left || ""};
@@ -39,6 +38,18 @@ export const Box = styled.div`
   box-shadow: ${({ theme, boxShadow }) =>
     boxShadow ? `0 0 7px ${theme.colors.neutral200}` : ""};
 `;
+
+export const Main = styled.main`
+  display: ${({ display }) => display || "flex"};
+  flex-wrap: ${({ wrap }) => wrap || "nowrap"};
+  flex-direction: ${({ direction }) => direction || "row"};
+
+  gap: ${({ gap }) => gap || ""};
+  width: 100%;
+  background-color: ${({ bg }) => bg || ""};
+  gap: ${({ gap }) => gap || ""};
+`;
+
 export const Button = styled.button`
   cursor: pointer;
   display: flex;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Gallery from "../components/Gallery";
-import { Box } from "../styles/styledComponents";
+import { Box, Main, WavePattern } from "../styles/styledComponents";
 import { useAppContext } from "../components/context";
 import Navbar from "../components/Navbar";
 import TechZone from "../components/TechZone";
@@ -136,18 +136,30 @@ export default function Home() {
         <title>Challenge</title>
         <link rel="icon" href={"/favicon.ico"} />
       </Head>
-      <Box direction="column">
-        <main>
+      <Box direction="column" maxW="1920px" m="auto">
+        <Main gap="10rem" direction="column">
           <Navbar addPoints={addPoints} isLoading={isLoading} />
-          <TechZone />
-          <Walkthrough />
-
+          <WavePattern
+            className="WavePattern"
+            direction="column"
+            //p="0 14.25rem"
+            //maxW="76.25%"
+            w="100%"
+            m="auto"
+            h="auto"
+            //h="52rem"
+            justifyContent="space-around"
+            gap="5rem"
+          >
+            <TechZone />
+            <Walkthrough />
+          </WavePattern>
           {items ? (
             <Gallery redeemItem={redeemItem} isLoading={isLoading} />
           ) : (
             ""
           )}
-        </main>
+        </Main>
       </Box>
       <Footer>Footer</Footer>
     </div>
