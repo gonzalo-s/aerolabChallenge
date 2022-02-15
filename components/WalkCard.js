@@ -1,6 +1,7 @@
 import { Box, BgGradient } from "../styles/styledComponents";
 import Image from "next/image";
-import { StyledTitleGradient, StyledDesktText } from "../styles/StyledText";
+import { TextL1Default, TitleGradientL3 } from "../styles/StyledText";
+import { WalkCardTextWrapper, WalkCardWrapper } from "../styles/styledWalkCard";
 
 function WalkCard({
   src,
@@ -14,9 +15,7 @@ function WalkCard({
   zIndex,
 }) {
   return (
-    <Box
-      w="33.25rem"
-      h="42.25rem"
+    <WalkCardWrapper
       p="0.75rem"
       radius="2rem"
       border="1px"
@@ -27,15 +26,11 @@ function WalkCard({
       m={m}
       zIndex={zIndex}
     >
-      <Box direction="column" radius="2rem" h="31.125rem" border="1px">
+      <Box direction="column" radius="2rem" h="100%" border="1px">
         <BgGradient bgGradient="speciallIllustrationBg" radius="2rem 2rem 0 0">
           <Image src={src} alt={alt} />
         </BgGradient>
-        <Box
-          direction="column"
-          alignItems="flex-start"
-          p="0 7rem 1.5rem 1.5rem "
-        >
+        <WalkCardTextWrapper>
           <Box className="cardHeader" justifyContent="flex-start" p="1rem 0">
             <BgGradient
               w="3rem"
@@ -46,14 +41,16 @@ function WalkCard({
             >
               <Image src={icon} alt={iconAlt} />
             </BgGradient>
-            <StyledTitleGradient p="0 0 0 1rem" w="auto" styleType="l3">
+            <TitleGradientL3 p="0 0 0 1rem" w="auto">
               {heading}
-            </StyledTitleGradient>
+            </TitleGradientL3>
           </Box>
-          <StyledDesktText color="neutral600">{description}</StyledDesktText>
-        </Box>
+          <TextL1Default w="auto" color="neutral600">
+            {description}
+          </TextL1Default>
+        </WalkCardTextWrapper>
       </Box>
-    </Box>
+    </WalkCardWrapper>
   );
 }
 

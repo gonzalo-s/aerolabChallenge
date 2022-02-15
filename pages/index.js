@@ -147,7 +147,6 @@ export default function Home() {
             w="100%"
             m="auto"
             h="auto"
-            //h="52rem"
             justifyContent="space-around"
             gap="5rem"
           >

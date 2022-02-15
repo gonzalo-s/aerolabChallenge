@@ -1,10 +1,10 @@
 import React from "react";
 import { Box } from "../styles/styledComponents";
 import {
-  StyledTitleGradient,
-  StyledTitle,
-  StyledDesktText,
-  StyledDesktTextGrad,
+  TextL1Default,
+  TextL1DefaultGrad,
+  TitleGradientL2,
+  TitleL2Default,
 } from "../styles/StyledText";
 import { useAppContext } from "./context";
 import Filter from "./Filter";
@@ -40,7 +40,6 @@ export default function Gallery({ redeemItem, isLoading }) {
       className="gallery"
       direction="column"
       alignItems="center"
-      //p="10rem 0 0 0"
       maxW="76.25%"
       w="100%"
       m="auto"
@@ -52,10 +51,10 @@ export default function Gallery({ redeemItem, isLoading }) {
         w="100%"
         p="0 0 2.5rem 0"
       >
-        <StyledTitleGradient w="auto" p="0 1rem 0 0" styleType="l2">
+        <TitleGradientL2 w="auto" p="0 1rem 0 0">
           tech
-        </StyledTitleGradient>{" "}
-        <StyledTitle styleType="l2">products</StyledTitle>
+        </TitleGradientL2>{" "}
+        <TitleL2Default styleType="l2">products</TitleL2Default>
       </Box>
       <Box h="3.688rem" className="filterSortWrapper">
         <Filter />
@@ -84,14 +83,14 @@ export default function Gallery({ redeemItem, isLoading }) {
       <Box justifyContent="space-between" p="4rem 0 0 0">
         <Box w="16.188rem" />
         <Box w="auto">
-          <StyledDesktTextGrad w="auto">
+          <TextL1DefaultGrad w="auto">
             {shownProducts() > 0
               ? `${shownProducts()} of ${totalProducts()} `
               : ""}
-          </StyledDesktTextGrad>
-          <StyledDesktText color="neutral600" w="auto" p="0 0 0 0.5rem">
+          </TextL1DefaultGrad>
+          <TextL1Default color="neutral600" w="auto" p="0 0 0 0.5rem">
             products
-          </StyledDesktText>
+          </TextL1Default>
         </Box>
         <PagesNav />
       </Box>

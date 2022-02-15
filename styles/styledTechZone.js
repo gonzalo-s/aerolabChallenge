@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import { Box } from "./styledComponents";
+import { Box, BgGradient } from "./styledComponents";
 import { device } from "./theme"; //mobile || tablet || desktop
 
 export const TechZoneWrapper = styled(Box)`
   flex-direction: column;
-  background-color: green;
+  // background-color: green;
   height: auto;
   gap: 7rem;
   align-items: center;
 
   @media ${device.desktop} {
     flex-direction: row;
-    background-color: red;
+    //background-color: red;
     align-items: flex-start;
   }
 `;
@@ -66,5 +66,33 @@ export const TechZoneTextWrapper = styled(Box)`
 
   @media ${device.desktop} {
     align-items: flex-start;
+  }
+`;
+
+export const TechZoneBgGradient = styled(BgGradient)`
+  height: 37.5rem;
+  border-radius: 6.5rem;
+  position: absolute;
+  bottom: 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  @media ${device.desktop} {
+    background: ${({ theme }) => theme.colors.specialSectionBg};
+  }
+`;
+
+export const TechZoneImgWrapper = styled(Box)`
+  flex-direction: column;
+  align-items: center;
+  background-color: green;
+  justify-content: flex-end;
+  width: 50%;
+  height: 37.5rem;
+  position: relative;
+  min-width: 45.125rem;
+  display: none;
+  @media ${device.desktop} {
+    display: flex;
   }
 `;

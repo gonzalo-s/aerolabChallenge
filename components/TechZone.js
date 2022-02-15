@@ -1,6 +1,5 @@
 import {
-  TitleGradient,
-  StyledDesktText,
+  TitleGradientL1,
   TitleL1Default,
   TextL1Default,
   TextL1AllCaps,
@@ -12,10 +11,12 @@ import Image from "next/image";
 import { Link } from "react-scroll";
 import {
   TechZoneWrapper,
+  TechZoneImgWrapper,
   TextAndButtonWrapper,
   HeroTitleWrapper,
   TechZoneButtonWrapper,
   TechZoneTextWrapper,
+  TechZoneBgGradient,
 } from "../styles/styledTechZone";
 
 export default function TechZone() {
@@ -32,9 +33,9 @@ export default function TechZone() {
         <TechZoneTextWrapper>
           <TextL1AllCaps color="neutral600">EXPLORE THE</TextL1AllCaps>
           <HeroTitleWrapper>
-            <TitleGradient justifyContent="flex-start" w="100%">
+            <TitleGradientL1 justifyContent="flex-start" w="100%">
               TECH
-            </TitleGradient>
+            </TitleGradientL1>
             <TitleL1Default w="100%">ZONE</TitleL1Default>
           </HeroTitleWrapper>
           <TextL1Default w="100%" color="neutral600">
@@ -75,33 +76,13 @@ export default function TechZone() {
         </TechZoneButtonWrapper>
       </TextAndButtonWrapper>
 
-      <Box
-        className="techZoneImgWrapper"
-        direction="column"
-        alignItems="center"
-        justifyContent="flex-end"
-        w="50%"
-        h="37.5rem"
-        position="relative"
-        minW="45.125rem"
-      >
-        <BgGradient
-          //w="50%"
-          //h="auto"
-          h="37.5rem"
-          radius="6.5rem"
-          bgGradient="specialSectionBg"
-          position="absolute"
-          bottom="0"
-          alignItems="flex-end"
-          justifyContent="flex-end"
-          //bottom="6.5rem"
-        >
+      <TechZoneImgWrapper>
+        <TechZoneBgGradient>
           <ImgContainer position="absolute" w="100%" h="115%">
             <Image src={HeroImage} alt="tech zone hero image" />
           </ImgContainer>
-        </BgGradient>
-      </Box>
+        </TechZoneBgGradient>
+      </TechZoneImgWrapper>
     </TechZoneWrapper>
   );
 }
