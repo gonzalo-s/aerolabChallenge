@@ -46,7 +46,6 @@ export const Main = styled.main`
   flex-direction: ${({ direction }) => direction || "row"};
   gap: ${({ gap }) => gap || ""};
   width: 100%;
-  background-color: violet;
   gap: ${({ gap }) => gap || ""};
   max-width: 1920px;
   margin: auto;
@@ -87,7 +86,6 @@ export const Wrapper = styled(Box)``;
 
 export const SpanBlock = styled.span`
   display: block;
-  background-color: green;
 `;
 
 export const TriangleDownIcon = styled(TriangleDown)`

@@ -4,7 +4,6 @@ import { device } from "./theme"; //mobile || tablet || desktop
 
 export const TechZoneWrapper = styled(Box)`
   flex-direction: column;
-  // background-color: green;
   height: auto;
   gap: 7rem;
   align-items: center;
@@ -25,7 +24,6 @@ export const TextAndButtonWrapper = styled(Box)`
   align-items: center;
   text-align: center;
   width: 19rem;
-  background-color: pink;
   height: 25rem;
   @media ${device.desktop} {
     align-items: flex-start;
@@ -89,7 +87,6 @@ export const TechZoneBgGradient = styled(BgGradient)`
 export const TechZoneImgWrapper = styled(Box)`
   flex-direction: column;
   align-items: center;
-  background-color: green;
   justify-content: flex-end;
   width: 50%;
   height: 37.5rem;

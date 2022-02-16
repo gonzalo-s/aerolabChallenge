@@ -12,7 +12,7 @@ export default function Sort({ className }) {
 
   return (
     <SortWrapper className={className}>
-      <Box w="38.5rem" h="100%" bg="yellow">
+      <Box w="38.5rem" h="100%">
         <TextL1Default className="sortByText" w="8rem" color="neutral600">
           Sort by:
         </TextL1Default>

@@ -10,7 +10,6 @@ export default function Navbar({ addPoints, isLoading }) {
         className="logoMenuBtn"
         justifyContent="space-between"
         alignItems="center"
-        bg="red"
       >
         <StyledAerolabLogo />
         <AddBalance addPoints={addPoints} isLoading={isLoading} />

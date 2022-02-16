@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { TriangleDown } from "@styled-icons/entypo";
 import { Box } from "./styledComponents";
 import { device } from "./theme"; //mobile || tablet || desktop
 
 export const GalleryWrapper = styled(Box)`
-  background-color: green;
   gap: 4rem;
   width: 100%;
   margin: auto;
@@ -18,7 +16,6 @@ export const GalleryWrapper = styled(Box)`
 export const FilterPagesAndSortWrapper = styled(Box)`
   height: auto;
   width: 100%;
-  background-color: red;
   flex-wrap: wrap;
   .mobileSort {
     display: flex;

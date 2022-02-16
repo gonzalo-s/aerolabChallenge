@@ -6,7 +6,6 @@ export const NavbarWrapper = styled.nav`
   align-items: flex-start;
   margin: auto;
   height: 15rem;
-  background-color: violet;
   width: 96%;
   max-width: 1024px;
 

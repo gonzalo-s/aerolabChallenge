@@ -5,7 +5,6 @@ import { device } from "./theme"; //mobile || tablet || desktop
 export const WalkthroughWrapper = styled(Box)`
   align-items: center;
   margin: auto;
-  background-color: yellow;
   width: 96%;
   max-width: 1024px;
   height: 107.25rem;
@@ -18,7 +17,6 @@ export const WalkthroughWrapper = styled(Box)`
     width: 100%;
     max-width: 1464px;
     flex-direction: row;
-    //background-color: red;
     align-items: flex-start;
   }
 `;

@@ -26,7 +26,6 @@ export const FilterMenuButtonWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  background-color: red;
 `;
 export const FilterMenuButton = styled.button`
   cursor: pointer;
