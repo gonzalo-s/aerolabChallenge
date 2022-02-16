@@ -8,10 +8,14 @@ export const TechZoneWrapper = styled(Box)`
   height: auto;
   gap: 7rem;
   align-items: center;
-
+  width: 100%;
+  margin: auto;
+  max-width: 96%;
+  @media ${device.desktop} {
+    max-width: 76.25%;
+  }
   @media ${device.desktop} {
     flex-direction: row;
-    //background-color: red;
     align-items: flex-start;
   }
 `;

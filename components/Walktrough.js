@@ -3,6 +3,7 @@ import {
   WalkthroughVrImg,
   WalkthroughBgGradient,
   WalkthroughWrapper,
+  WalkthroughRelativeWrapper,
 } from "../styles/styledWalktrough";
 import Image from "next/image";
 import WalkCard from "../components/WalkCard";
@@ -18,14 +19,7 @@ import HeroImage from "../assets/heroImage912.png";
 function Walkthrough() {
   return (
     <WalkthroughWrapper>
-      <Box
-        direction="column"
-        justifyContent="flex-end"
-        alignItems="center"
-        h="100%"
-        position="relative"
-        //bg="green"
-      >
+      <WalkthroughRelativeWrapper>
         <WalkthroughVrImg>
           <Image src={HeroImage} alt="tech zone hero image" />
         </WalkthroughVrImg>
@@ -62,7 +56,7 @@ function Walkthrough() {
             m="0 0 0 -5rem"
           />
         </WalkthroughBgGradient>
-      </Box>
+      </WalkthroughRelativeWrapper>
     </WalkthroughWrapper>
   );
 }

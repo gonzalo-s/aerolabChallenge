@@ -8,7 +8,7 @@ import {
   ImgContainer,
   Wrapper,
 } from "../styles/styledComponents";
-import { StyledDesktTextGrad, StyledDesktText } from "../styles/StyledText";
+import { TextL1DefaultGrad, TextL1Default } from "../styles/StyledText";
 import { useAppContext } from "./context";
 import card from "../assets/card.png";
 import Image from "next/image";
@@ -55,9 +55,9 @@ function AddBalance({ addPoints, isLoading }) {
           p="1rem"
         >
           <LogoGrad width="32px" height="32px" viewBox="0 0 260 260" />
-          <StyledDesktTextGrad w="3.75rem" h="100%">
+          <TextL1DefaultGrad w="3.75rem" h="100%">
             {isLoading ? "----" : userData?.points}
-          </StyledDesktTextGrad>
+          </TextL1DefaultGrad>
           {displayMenu ? (
             <ChevronUpIcon w="2rem" viewBox="0 0 20 20" />
           ) : (
@@ -83,7 +83,7 @@ function AddBalance({ addPoints, isLoading }) {
           position="absolute"
         >
           <Box bb={"1px"} h="20%" alignItems="center" p={"0 0 0 2rem"}>
-            <StyledDesktText color="neutral900">Add Balance</StyledDesktText>
+            <TextL1Default color="neutral900">Add Balance</TextL1Default>
           </Box>
 
           <Box

@@ -5,20 +5,37 @@ import { device } from "./theme"; //mobile || tablet || desktop
 export const WalkthroughWrapper = styled(Box)`
   align-items: center;
   margin: auto;
-  //background-color: yellow;
-  height: 56rem;
+  background-color: yellow;
+  width: 96%;
+  max-width: 1024px;
+  height: 107.25rem;
 
+  @media ${device.tablet} {
+    height: 56rem;
+  }
   @media ${device.desktop} {
     height: 45.063rem;
     width: 100%;
+    max-width: 1464px;
     flex-direction: row;
     //background-color: red;
     align-items: flex-start;
   }
 `;
 
+export const WalkthroughRelativeWrapper = styled(Box)`
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  //bg:green;
+  @media ${device.desktop} {
+  }
+`;
+
 export const WalkthroughVrImg = styled(ImgContainer)`
-  width: 50%;
+  width: 512px;
   position: absolute;
   top: -2rem;
   //height: 24rem;
@@ -28,15 +45,25 @@ export const WalkthroughVrImg = styled(ImgContainer)`
 `;
 export const WalkthroughBgGradient = styled(BgGradient)`
   position: absolute;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   //height: 33rem;
-  height: 41rem;
   padding: 0 1rem 2rem 1rem;
   border-radius: 0;
   background: ${({ theme }) => theme.colors.specialSectionBg};
   gap: 0.5rem;
+  height: 100%;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    height: 41rem;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
   @media ${device.desktop} {
+    flex-direction: row;
     height: 33rem;
     justify-content: center;
     align-items: center;
@@ -45,71 +72,46 @@ export const WalkthroughBgGradient = styled(BgGradient)`
   }
 `;
 
-// export const TextAndButtonWrapper = styled(Box)`
-//   flex-direction: column;
-//   align-items: center;
-//   text-align: center;
-//   width: 19rem;
-//   background-color: pink;
-//   height: 25rem;
-//   @media ${device.desktop} {
-//     align-items: flex-start;
-//     text-align: start;
-//     width: 37.625rem;
-//     height: 36.063rem;
-//   }
-// `;
-// export const HeroTitleWrapper = styled(Box)`
-//   flex-direction: column;
-//   justify-content: center;
-//   height: 11rem;
-//   div {
-//     justify-content: center;
-//   }
+// WALKCARD
 
-//   @media ${device.desktop} {
-//     height: 24rem;
-//     div {
-//       justify-content: flex-start;
-//     }
-//   }
-// `;
-// export const TechZoneButtonWrapper = styled(Box)`
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   a {
-//     width: 100%;
-//   }
+export const WalkCardWrapper = styled(Box)`
+  transform: rotate(0deg);
+  margin: 0;
+  width: 20.188rem;
 
-//   @media ${device.desktop} {
-//     height: auto;
-//     width: 19.875rem;
-//   }
-// `;
+  height: 25.5rem;
+  @media ${device.tablet} {
+    height: 29.813rem;
+  }
+  @media ${device.desktop} {
+    width: 33.25rem;
+    height: 42.25rem;
+    transform: ${({ rotate }) => `rotate(${rotate})`};
+    margin: ${({ m }) => m};
+  }
+`;
 
-// export const TechZoneTextWrapper = styled(Box)`
-//   flex-direction: column;
-//   align-items: flex-start;
-//   justify-content: flex-start;
+export const WalkCardTextWrapper = styled(Box)`
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  @media ${device.desktop} {
+    padding: 0 7rem 1.5rem 1.5rem;
+  }
+`;
 
-//   @media ${device.desktop} {
-//     align-items: flex-start;
-//   }
-// `;
-
-// TechZoneImgWrapper;
-// export const TechZoneImgWrapper = styled(Box)`
-//   flex-direction: column;
-//   align-items: center;
-//   background-color: green;
-//   justify-content: flex-end;
-//   width: 50%;
-//   height: 37.5rem;
-//   position: relative;
-//   min-width: 45.125rem;
-//   display: none;
-//   @media ${device.desktop} {
-//     display: flex;
-//   }
-// `;
+export const WalkCardImgBgGradient = styled(BgGradient)`
+  display: flex;
+  align-items: center;
+  padding: 0rem 0 4rem 0;
+  width: 100%;
+  height: 13.5rem;
+  @media ${device.tablet} {
+    height: 19.563rem;
+    padding: 0;
+  }
+  @media ${device.desktop} {
+    height: 31.125rem;
+    padding: 0;
+  }
+`;

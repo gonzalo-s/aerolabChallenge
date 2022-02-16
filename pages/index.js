@@ -136,30 +136,22 @@ export default function Home() {
         <title>Challenge</title>
         <link rel="icon" href={"/favicon.ico"} />
       </Head>
-      <Box direction="column" maxW="1920px" m="auto">
-        <Main gap="10rem" direction="column">
-          <Navbar addPoints={addPoints} isLoading={isLoading} />
-          <WavePattern
-            className="WavePattern"
-            direction="column"
-            //p="0 14.25rem"
-            //maxW="76.25%"
-            w="100%"
-            m="auto"
-            h="auto"
-            justifyContent="space-around"
-            gap="5rem"
-          >
-            <TechZone />
-            <Walkthrough />
-          </WavePattern>
-          {items ? (
-            <Gallery redeemItem={redeemItem} isLoading={isLoading} />
-          ) : (
-            ""
-          )}
-        </Main>
-      </Box>
+      <Navbar addPoints={addPoints} isLoading={isLoading} />
+      <Main gap="10rem" direction="column">
+        <WavePattern
+          className="WavePattern"
+          direction="column"
+          w="100%"
+          m="auto"
+          h="auto"
+          justifyContent="space-around"
+          gap="5rem"
+        >
+          <TechZone />
+          <Walkthrough />
+        </WavePattern>
+        {items ? <Gallery redeemItem={redeemItem} isLoading={isLoading} /> : ""}
+      </Main>
       <Footer>Footer</Footer>
     </div>
   );

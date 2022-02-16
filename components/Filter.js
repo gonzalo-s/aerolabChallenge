@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
+import { Box } from "../styles/styledComponents";
 import {
-  Box,
   FilterItem,
   FilterWrapper,
   FilterMenuButton,
   TriangleDownIcon,
-} from "../styles/styledComponents";
-import { StyledDesktText } from "../styles/StyledText";
+  TextAndButtonWrapper,
+} from "../styles/styledFilter";
+import { TextL1Default } from "../styles/StyledText";
 import { useAppContext } from "./context";
 import useOnClickOutside from "./useOnClickOutside";
 
@@ -26,11 +27,20 @@ export default function Filter() {
   }
 
   return (
-    <FilterWrapper ref={ref} w="24.563rem" h="100%" borderRight="1px">
-      <Box className="textAndButtonWrapper" justifyContent="flex-start">
-        <StyledDesktText p="0 1rem 0 0" color="neutral600" w="auto">
+    <FilterWrapper ref={ref} h="100%" borderRight="1px">
+      <TextAndButtonWrapper
+        className="textAndButtonWrapper"
+        h="3.688rem"
+        justifyContent="flex-start"
+      >
+        <TextL1Default
+          className="filterByText"
+          p="0 1rem 0 0"
+          color="neutral600"
+          w="auto"
+        >
           Filter by:
-        </StyledDesktText>
+        </TextL1Default>
         <FilterMenuButton
           p="0 0.25rem 0 1.5rem"
           w="16rem"
@@ -39,7 +49,7 @@ export default function Filter() {
           {filters.filterBy}
           <TriangleDownIcon />
         </FilterMenuButton>
-      </Box>
+      </TextAndButtonWrapper>
       {displayMenu ? (
         <Box
           className="filterMenuWrapper"

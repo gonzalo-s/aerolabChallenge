@@ -1,6 +1,12 @@
 import React from "react";
 import { Box } from "../styles/styledComponents";
 import {
+  GalleryWrapper,
+  FilterPagesAndSortWrapper,
+  GalleryItemsWrapper,
+  FilterPagesWrapper,
+} from "../styles/styledGallery";
+import {
   TextL1Default,
   TextL1DefaultGrad,
   TitleGradientL2,
@@ -36,36 +42,28 @@ export default function Gallery({ redeemItem, isLoading }) {
   };
 
   return (
-    <Box
-      className="gallery"
-      direction="column"
-      alignItems="center"
-      maxW="76.25%"
-      w="100%"
-      m="auto"
-    >
+    <GalleryWrapper className="gallery" direction="column" alignItems="center">
       <Box
         className="techProductsTitle"
         justifyContent="flex-start"
         alignItems="center"
         w="100%"
-        p="0 0 2.5rem 0"
       >
         <TitleGradientL2 w="auto" p="0 1rem 0 0">
           tech
         </TitleGradientL2>{" "}
         <TitleL2Default styleType="l2">products</TitleL2Default>
       </Box>
-      <Box h="3.688rem" className="filterSortWrapper">
-        <Filter />
-        <Sort />
-        <PagesNav />
-      </Box>
-      <Box
-        w="91.5rem"
-        wrap="wrap"
-        p="4rem 0 0 0"
-        justifyContent="space-between"
+      <FilterPagesAndSortWrapper>
+        <FilterPagesWrapper>
+          <Filter />
+          <Sort className="desktopSort" />
+          <PagesNav />
+        </FilterPagesWrapper>
+        <Sort className="mobileSort" />
+      </FilterPagesAndSortWrapper>
+      <GalleryItemsWrapper
+      //w="91.5rem"
       >
         {pages !== null
           ? pages[actualPageIdx].map((item, id) => {
@@ -79,7 +77,7 @@ export default function Gallery({ redeemItem, isLoading }) {
               );
             })
           : ""}
-      </Box>
+      </GalleryItemsWrapper>
       <Box justifyContent="space-between" p="4rem 0 0 0">
         <Box w="16.188rem" />
         <Box w="auto">
@@ -94,6 +92,6 @@ export default function Gallery({ redeemItem, isLoading }) {
         </Box>
         <PagesNav />
       </Box>
-    </Box>
+    </GalleryWrapper>
   );
 }

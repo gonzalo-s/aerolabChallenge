@@ -6,7 +6,8 @@ import {
   BgGradient,
   GallImgContainer,
 } from "../styles/styledComponents";
-import { StyledDesktText } from "../styles/StyledText";
+import { ItemWrapper, ItemImgContainer } from "../styles/styledGallery";
+import { TextL1Default, TextL2AllCaps } from "../styles/StyledText";
 import LogoInvert from "../assets/logoGradInvert.svg";
 import LogoGray from "../assets/logoGray.svg";
 import { useAppContext } from "../components/context";
@@ -26,7 +27,7 @@ function GalleryItem({ item, redeemItem, isLoading }) {
   }, [isLoading]);
 
   return (
-    <Box direction="column" w="21.75" h="31.625">
+    <ItemWrapper>
       <Box
         direction="column"
         border="1px"
@@ -35,28 +36,29 @@ function GalleryItem({ item, redeemItem, isLoading }) {
         justifyContent="flex-start"
         boxShadow={true}
       >
-        <GallImgContainer display="flex" w="21.75rem" h="21.558rem">
+        <ItemImgContainer>
           <Image
             src={item.img.url}
             alt={item.name}
             layout="fill"
             objectFit="contain"
           />
-        </GallImgContainer>
+        </ItemImgContainer>
         <Box
           direction="column"
           h="5.5rem"
           justifyContent="center"
-          p="1rem 1.5rem 1.5rem 1.5rem"
+          alignItems="flex-start"
+          p="1rem 0 1.5rem 1.5rem"
           bt="1px"
         >
-          <StyledDesktText color="neutral900">{item.name}</StyledDesktText>
-          <StyledDesktText color="neutral600" styleType="l2AllCaps">
+          <TextL1Default>{item.name}</TextL1Default>
+          <TextL2AllCaps w="auto" color="neutral600">
             {item.category}
-          </StyledDesktText>
+          </TextL2AllCaps>
         </Box>
       </Box>
-      <Box p="2rem 0 2rem 0">
+      <Box>
         <Box radius="1rem" boxShadow={true}>
           {isRedeeming ? (
             <BgGradient
@@ -66,7 +68,9 @@ function GalleryItem({ item, redeemItem, isLoading }) {
               alignItems="center"
               bgGradient="speciallIllustrationBg"
             >
-              <StyledDesktText w="auto">Processing...</StyledDesktText>
+              <TextL1Default color="neutral0" w="auto">
+                Processing...
+              </TextL1Default>
             </BgGradient>
           ) : points < item.cost ? (
             <Box
@@ -77,13 +81,13 @@ function GalleryItem({ item, redeemItem, isLoading }) {
               radius="1rem"
             >
               {" "}
-              <StyledDesktText color="neutral600" w="auto">
+              <TextL1Default color="neutral600" w="auto">
                 You need
-              </StyledDesktText>
+              </TextL1Default>
               <LogoGray width="50px" height="32px" viewBox="0 0 256 256" />
-              <StyledDesktText color="neutral600" w="auto">
+              <TextL1Default color="neutral600" w="auto">
                 {item.cost}
-              </StyledDesktText>
+              </TextL1Default>
             </Box>
           ) : (
             <Button
@@ -103,7 +107,7 @@ function GalleryItem({ item, redeemItem, isLoading }) {
           )}
         </Box>
       </Box>
-    </Box>
+    </ItemWrapper>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { device } from "../styles/theme"; //mobile || tablet || desktop
 
 const Box = styled.div`
   display: ${({ display }) => display || "flex"};
@@ -54,10 +55,12 @@ const TextGradientResp = styled.div`
   width: ${({ w }) => w || "100%"};
   height: ${({ h }) => h || "auto"};
   color: ${({ theme }) => theme.colors.neutral100};
-  ${({ theme, textStyle }) =>
-    textStyle
-      ? theme.textStyles.desktopText[textStyle]
-      : theme.textStyles.desktopText.l1}
+  ${({ theme }) => theme.textStyles.mobileText.l1}
+
+  @media ${device.desktop} {
+    ${({ theme }) => theme.textStyles.desktopText.l1}
+  }
+
   ${({ isActive, theme }) =>
     isActive
       ? ``

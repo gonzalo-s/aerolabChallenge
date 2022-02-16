@@ -1,7 +1,11 @@
 import { Box, BgGradient } from "../styles/styledComponents";
 import Image from "next/image";
 import { TextL1Default, TitleGradientL3 } from "../styles/StyledText";
-import { WalkCardTextWrapper, WalkCardWrapper } from "../styles/styledWalkCard";
+import {
+  WalkCardTextWrapper,
+  WalkCardWrapper,
+  WalkCardImgBgGradient,
+} from "../styles/styledWalktrough";
 
 function WalkCard({
   src,
@@ -27,9 +31,12 @@ function WalkCard({
       zIndex={zIndex}
     >
       <Box direction="column" radius="2rem" h="100%" border="1px">
-        <BgGradient bgGradient="speciallIllustrationBg" radius="2rem 2rem 0 0">
-          <Image src={src} alt={alt} />
-        </BgGradient>
+        <WalkCardImgBgGradient
+          bgGradient="speciallIllustrationBg"
+          radius="2rem 2rem 0 0"
+        >
+          <Image className="cardImage" src={src} alt={alt} />
+        </WalkCardImgBgGradient>
         <WalkCardTextWrapper>
           <Box className="cardHeader" justifyContent="flex-start" p="1rem 0">
             <BgGradient

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TriangleDown, ChevronDown, ChevronUp } from "@styled-icons/entypo";
-
+import { device } from "./theme";
 export const Box = styled.div`
   box-sizing: border-box;
   flex-wrap: ${({ wrap }) => wrap || ""};
@@ -18,6 +18,7 @@ export const Box = styled.div`
   top: ${({ top }) => top || ""};
   bottom: ${({ bottom }) => bottom || ""};
   flex-direction: ${({ direction }) => direction || "row"};
+  order: ${({ order }) => order || 0};
   align-items: ${({ alignItems }) => alignItems || "center"};
   justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
   pointer-events: ${({ pointerEvents }) => pointerEvents || ""};
@@ -43,11 +44,12 @@ export const Main = styled.main`
   display: ${({ display }) => display || "flex"};
   flex-wrap: ${({ wrap }) => wrap || "nowrap"};
   flex-direction: ${({ direction }) => direction || "row"};
-
   gap: ${({ gap }) => gap || ""};
   width: 100%;
-  background-color: ${({ bg }) => bg || ""};
+  background-color: violet;
   gap: ${({ gap }) => gap || ""};
+  max-width: 1920px;
+  margin: auto;
 `;
 
 export const Button = styled.button`
@@ -134,67 +136,6 @@ export const BalanceMenuWrapper = styled(Box)`
   box-shadow: 0 0 8px ${({ theme }) => theme.colors.neutral200};
 `;
 
-export const FilterWrapper = styled(Box)`
-  display: flex;
-  position: relative;
-  border-right: ${({ borderRight, theme }) =>
-    `${borderRight} solid ${theme.colors.neutral300}`};
-`;
-
-export const FilterMenuButton = styled.button`
-  cursor: pointer;
-  display: flex;
-  align-items: ${({ alignItems }) => alignItems || "center"};
-  padding: ${({ p }) => p || ""};
-  justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
-  width: ${({ w }) => w || "100%"};
-  height: ${({ h }) => h || "100%"};
-  border-radius: ${({ radius }) => radius || "1rem"};
-  ${({ theme }) => theme.textStyles.desktopText.l1};
-  color: ${({ theme }) => theme.colors.neutral600};
-  border: 1px solid ${({ theme }) => theme.colors.neutral200};
-  background-color: ${({ theme }) => theme.colors.neutral0};
-`;
-
-export const FilterItem = styled.li`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  ${({ theme }) => theme.textStyles.desktopText.l1};
-  width: ${({ w }) => w || "100%"};
-  height: ${({ h }) => h || "100%"};
-  padding-left: 2rem;
-  color: ${({ theme }) => theme.colors.neutral600};
-  :hover {
-    background-color: ${({ theme }) => theme.colors.neutral100};
-  }
-`;
-export const GalleryWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-export const GalleryItemWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  border: 1px solid black;
-  width: 348px;
-  height: 506px;
-`;
-
-export const GallImgContainer = styled.div`
-  position: relative;
-  display: ${({ display }) => display || ""};
-  justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
-  align-items: ${({ alignItems }) => alignItems || "stretch"};
-  width: ${({ w }) => w || "21.75rem"};
-  height: ${({ h }) => h || "21.558rem"};
-  padding: ${({ p }) => p || ""};
-  background-color: ${({ bg }) => bg || ""};
-`;
-
 export const ImgContainer = styled.div`
   display: flex;
   justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
@@ -210,7 +151,6 @@ export const ImgContainer = styled.div`
 
 export const WavePattern = styled(Box)`
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0dGVybiBpZD0icGF0dGVybi13YXZlcyIgeD0iMCIgeT0iMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjU2NiIgaGVpZ2h0PSIyNyIgdmlld0JveD0iMCAwIDU2NiAyNyI+CjxwYXRoIGlkPSd3YXZlJyBkPSJNMSAxMy41QzMyLjMzMzMgLTMuMTY2NjcgNjMuNjY2NyAtMy4xNjY2NyA5NSAxMy41QzEyNi4zMzMgMzAuMTY2NyAxNTcuNjY3IDMwLjE2NjcgMTg5IDEzLjVDMjIwLjMzMyAtMy4xNjY2NyAyNTEuNjY3IC0zLjE2NjY3IDI4MyAxMy41QzMxNC4zMzMgMzAuMTY2NyAzNDUuNjY3IDMwLjE2NjcgMzc3IDEzLjVDNDA4LjMzMyAtMy4xNjY2NyA0MzkuNjY3IC0zLjE2NjY3IDQ3MSAxMy41QzUwMi4zMzMgMzAuMTY2NyA1MzMuNjY3IDMwLjE2NjcgNTY1IDEzLjUiIHN0cm9rZT0iI0Y1RjlGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjwvcGF0dGVybj4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuLXdhdmVzKSI+PC9yZWN0Pgo8L3N2Zz4KCg==");
-  // background-color: red;
 `;
 
 export const A = styled.a`

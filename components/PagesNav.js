@@ -1,8 +1,8 @@
 import React from "react";
-import { Box } from "../styles/styledComponents";
-import { StyledDesktText, StyledDesktTextGrad } from "../styles/StyledText";
+import { TextL1Default, TextL1DefaultGrad } from "../styles/StyledText";
 import ChevronButton from "./ChevronButton";
 import { useAppContext } from "./context";
+import { PagesNavWrapper, PagesNavTextWrapper } from "../styles/styledPagesNav";
 
 export default function PagesNav() {
   const { actualPageIdx, selectPage, pages } = useAppContext();
@@ -18,7 +18,7 @@ export default function PagesNav() {
   }
 
   return (
-    <Box
+    <PagesNavWrapper
       w="16.188rem"
       h="4rem"
       border="1px"
@@ -31,19 +31,19 @@ export default function PagesNav() {
         arrowLR="left"
         isActive={actualPageIdx > 0}
       />
-      <Box w="auto">
-        <StyledDesktText color="neutral600" w="auto" p="0 0.5rem 0 0">
+      <PagesNavTextWrapper w="auto">
+        <TextL1Default color="neutral600" w="auto" p="0 0.5rem 0 0">
           Page
-        </StyledDesktText>
-        <StyledDesktTextGrad w="auto">
+        </TextL1Default>
+        <TextL1DefaultGrad w="auto">
           {`${actualPageIdx + 1} of ${totalPages}`}
-        </StyledDesktTextGrad>
-      </Box>
+        </TextL1DefaultGrad>
+      </PagesNavTextWrapper>
       <ChevronButton
         onClick={() => nextPage()}
         arrowLR="right"
         isActive={actualPageIdx + 1 < totalPages}
       />
-    </Box>
+    </PagesNavWrapper>
   );
 }
