@@ -18,11 +18,6 @@ export function AppContextProvider({ children }) {
   });
   const [isSorted, setIsSorted] = useState(true);
 
-  // console.log("--items: ", items);
-  // console.log("--filteredItems: ", filteredItems);
-  // console.log("--filters: ", filters);
-  // console.log("--isSorted: ", isSorted);
-  // console.log("--userData: ", userData);
   function categories() {
     let newCategories = [];
     items?.map((item) => {
@@ -57,7 +52,6 @@ export function AppContextProvider({ children }) {
   );
   const paginate = useCallback(
     (itemsArr) => {
-      //console.log("itemsArr: ", itemsArr);
       let itemsPerPage = 16;
       let paginatedItems = [];
       let itemsArrMaxIdx = itemsArr.length - 1;
@@ -118,7 +112,6 @@ export function AppContextProvider({ children }) {
 
   useEffect(() => {
     if (isSorted) return;
-    //console.log("2 useEffect");
     sortItemsPaginateSetActualPage(filters.sortBy);
   }, [filters, isSorted, sortItemsPaginateSetActualPage]);
   return (
