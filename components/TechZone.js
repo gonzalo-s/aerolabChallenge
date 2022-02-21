@@ -21,14 +21,7 @@ import {
 
 export default function TechZone() {
   return (
-    <TechZoneWrapper
-    // maxW="76.25%"
-    // w="100%"
-    // h="50rem"
-    // m="auto"
-    // alignItems="flex-start"
-    // direction="row"
-    >
+    <TechZoneWrapper>
       <TextAndButtonWrapper>
         <TechZoneTextWrapper>
           <TextL1AllCaps color="neutral600">EXPLORE THE</TextL1AllCaps>

@@ -5,6 +5,7 @@ import {
   FilterPagesAndSortWrapper,
   GalleryItemsWrapper,
   FilterPagesWrapper,
+  GalleryBottomNav,
 } from "../styles/styledGallery";
 import {
   TextL1Default,
@@ -58,7 +59,7 @@ export default function Gallery({ redeemItem, isLoading }) {
         <FilterPagesWrapper>
           <Filter />
           <Sort className="desktopSort" />
-          <PagesNav />
+          <PagesNav classN="top" />
         </FilterPagesWrapper>
         <Sort className="mobileSort" />
       </FilterPagesAndSortWrapper>
@@ -78,7 +79,7 @@ export default function Gallery({ redeemItem, isLoading }) {
             })
           : ""}
       </GalleryItemsWrapper>
-      <Box justifyContent="space-between" p="4rem 0 0 0">
+      <GalleryBottomNav>
         <Box w="16.188rem" />
         <Box w="auto">
           <TextL1DefaultGrad w="auto">
@@ -90,8 +91,8 @@ export default function Gallery({ redeemItem, isLoading }) {
             products
           </TextL1Default>
         </Box>
-        <PagesNav />
-      </Box>
+        <PagesNav classN="bottom" />
+      </GalleryBottomNav>
     </GalleryWrapper>
   );
 }

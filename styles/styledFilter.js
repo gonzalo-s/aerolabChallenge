@@ -18,8 +18,11 @@ export const TextAndButtonWrapper = styled(Box)`
 export const FilterWrapper = styled(Box)`
   position: relative;
   width: auto;
-  border-right: ${({ borderRight, theme }) =>
-    `${borderRight} solid ${theme.colors.neutral300}`};
+  border-right: none;
+  @media ${device.desktop} {
+    border-right: ${({ borderRight, theme }) =>
+      `${borderRight} solid ${theme.colors.neutral300}`};
+  }
 `;
 export const FilterMenuButtonWrapper = styled.div`
   display: flex;
@@ -48,12 +51,25 @@ export const FilterMenuButton = styled.button`
 export const FilterMenuWrapper = styled.div`
   flex-direction: column;
   position: absolute;
-  top: 3rem;
-  right: 0;
-  border-radius: 16px;
-  border: 1px solid ${({ theme }) => theme.colors.neutral200};
+  width: 18.75rem;
+  height: auto;
+  align-items: flex-start;
+  top: 4.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid ${({ theme }) => theme.colors.neutral300};
   background-color: ${({ theme }) => theme.colors.neutral0};
   z-index: 999;
+  right: unset;
+  left: 0;
+
+  @media ${device.tablet} {
+    right: unset;
+    left: 0;
+  }
+  @media ${device.desktop} {
+    right: 0;
+    left: unset;
+  }
 `;
 
 export const FilterItem = styled.li`

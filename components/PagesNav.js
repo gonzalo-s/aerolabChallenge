@@ -4,7 +4,7 @@ import ChevronButton from "./ChevronButton";
 import { useAppContext } from "./context";
 import { PagesNavWrapper, PagesNavTextWrapper } from "../styles/styledPagesNav";
 
-export default function PagesNav() {
+export default function PagesNav({ classN }) {
   const { actualPageIdx, selectPage, pages } = useAppContext();
 
   let totalPages = pages?.length;
@@ -19,6 +19,7 @@ export default function PagesNav() {
 
   return (
     <PagesNavWrapper
+      className={classN}
       w="16.188rem"
       h="4rem"
       border="1px"
@@ -35,7 +36,7 @@ export default function PagesNav() {
         <TextL1Default color="neutral600" w="auto" p="0 0.5rem 0 0">
           Page
         </TextL1Default>
-        <TextL1DefaultGrad w="auto">
+        <TextL1DefaultGrad w="3rem">
           {`${actualPageIdx + 1} of ${totalPages}`}
         </TextL1DefaultGrad>
       </PagesNavTextWrapper>

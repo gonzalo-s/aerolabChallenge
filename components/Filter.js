@@ -4,6 +4,7 @@ import {
   FilterItem,
   FilterWrapper,
   FilterMenuButton,
+  FilterMenuWrapper,
   TriangleDownIcon,
   TextAndButtonWrapper,
 } from "../styles/styledFilter";
@@ -51,21 +52,7 @@ export default function Filter() {
         </FilterMenuButton>
       </TextAndButtonWrapper>
       {displayMenu ? (
-        <Box
-          className="filterMenuWrapper"
-          position="absolute"
-          direction="column"
-          alignItems="flex-start"
-          zIndex="999"
-          top="4.25rem"
-          right="0"
-          bgTheme="neutral0"
-          radius="0.5rem"
-          h="auto"
-          w="18.75rem"
-          border="1px"
-          borderColor="neutral300"
-        >
+        <FilterMenuWrapper>
           <FilterItem
             h="3.188rem"
             value={"All Products"}
@@ -89,7 +76,7 @@ export default function Filter() {
               </FilterItem>
             );
           })}
-        </Box>
+        </FilterMenuWrapper>
       ) : (
         ""
       )}

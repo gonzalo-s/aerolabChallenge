@@ -6,8 +6,11 @@ export const GalleryWrapper = styled(Box)`
   gap: 4rem;
   width: 100%;
   margin: auto;
+  max-width: 295px;
 
-  max-width: 1024px;
+  @media ${device.tablet} {
+    max-width: 984px;
+  }
   @media ${device.desktop} {
     width: 100%;
     max-width: 1464px;
@@ -17,13 +20,23 @@ export const FilterPagesAndSortWrapper = styled(Box)`
   height: auto;
   width: 100%;
   flex-wrap: wrap;
+  gap: 1rem;
   .mobileSort {
     display: flex;
   }
   .desktopSort {
     display: none;
   }
+  .top {
+    display: none;
+    @media ${device.tablet} {
+      display: flex;
+    }
 
+    @media ${device.desktop} {
+      display: flex;
+    }
+  }
   @media ${device.desktop} {
     flex-wrap: nowrap;
     height: 3.688rem;
@@ -78,5 +91,14 @@ export const ItemImgContainer = styled.div`
 
   @media ${device.desktop} {
     height: 21.558rem;
+  }
+`;
+
+export const GalleryBottomNav = styled(Box)`
+  flex-direction: column-reverse;
+  gap: 1.5rem;
+
+  @media ${device.desktop} {
+    flex-direction: row;
   }
 `;

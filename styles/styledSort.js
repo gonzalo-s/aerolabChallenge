@@ -3,12 +3,18 @@ import { Box } from "./styledComponents";
 import { device } from "./theme"; //mobile || tablet || desktop
 
 export const SortWrapper = styled(Box)`
-  height: 2.688rem;
-  width: auto;
-
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  @media ${device.tablet} {
+    height: 2.688rem;
+    width: auto;
+  }
   @media ${device.desktop} {
-    //width: 50.625rem;
-    // padding: 0 0 0 2.5rem;
+    height: 2.688rem;
+    width: auto;
+    width: 50.625rem;
   }
 
   .sortByText {
@@ -16,5 +22,28 @@ export const SortWrapper = styled(Box)`
     @media ${device.desktop} {
       display: flex;
     }
+  }
+`;
+
+export const SortButtonsWrapper = styled(Box)`
+  align-items: stretch;
+  justify-content: space-between;
+  flex-direction: column;
+  height: auto;
+
+  gap: 1rem;
+  button {
+    height: 40px;
+    padding: 0;
+  }
+  @media ${device.tablet} {
+    flex-direction: row;
+    height: 43px;
+    padding: 0;
+  }
+  @media ${device.desktop} {
+    flex-direction: row;
+    height: 43px;
+    padding: 0;
   }
 `;

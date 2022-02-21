@@ -1,5 +1,5 @@
 import { Box } from "../styles/styledComponents";
-import { SortWrapper } from "../styles/styledSort";
+import { SortWrapper, SortButtonsWrapper } from "../styles/styledSort";
 import { TextL1Default } from "../styles/StyledText";
 import { useAppContext } from "./context";
 import ButtonTextGradient from "./ButtonWithTextGradient";
@@ -16,7 +16,7 @@ export default function Sort({ className }) {
         <TextL1Default className="sortByText" w="8rem" color="neutral600">
           Sort by:
         </TextL1Default>
-        <Box w="50.625rem" alignItems="stretch" justifyContent="space-between">
+        <SortButtonsWrapper>
           <ButtonTextGradient
             radius="0.75rem"
             w="10.5rem"
@@ -40,7 +40,7 @@ export default function Sort({ className }) {
             value="Highest Price"
             isActive={filters?.sortBy === "Highest Price"}
           ></ButtonTextGradient>
-        </Box>
+        </SortButtonsWrapper>
       </Box>
     </SortWrapper>
   );

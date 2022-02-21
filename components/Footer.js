@@ -6,7 +6,7 @@ import { TextL1Default } from "../styles/StyledText";
 export default function Footer() {
   return (
     <Box
-      className="footerWeapper"
+      className="footerWrapper"
       direction="row"
       alignItems="center"
       justifyContent="center"
@@ -21,7 +21,7 @@ export default function Footer() {
         <A>
           <Box>
             <Github width="33" height="32" viewBox="0 0 33 32" />
-            <TextL1Default p="0 0 0 1rem" color="neutral600">
+            <TextL1Default w="auto" p="0 0 0 1rem" color="neutral600">
               View this repository
             </TextL1Default>
           </Box>
