@@ -1,6 +1,7 @@
-<H1 align='center'> Aerolab Challenge </H1><br>
+<H1 align='center'> Aerolab Challenge <img src="aerolabLogo.gif" width=100px/> </H1><br>
 
-![aerolab gif logo](aerolab.gif)
+
+
 
 <div>The challenge is to build a catalog view for a loyalty program app. 
 
@@ -63,7 +64,7 @@ Users can reedeem any product depending on users available points.
 
 <br>
 
-**[API](https://aerolabchallenge.docs.apiary.io)**
+**[API](https://aerolabchallenge.docs.apiary.io)** Documentation.
 
 <br>
 
