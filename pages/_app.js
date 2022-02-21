@@ -10,9 +10,9 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html,body {
-
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    width:100%;
     font-family: 'Montserrat', sans-serif;
     font-size:16px;
   }

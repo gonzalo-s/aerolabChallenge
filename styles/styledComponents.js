@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { TriangleDown, ChevronDown, ChevronUp } from "@styled-icons/entypo";
 import { device } from "./theme";
+
 export const Box = styled.div`
   box-sizing: border-box;
   flex-wrap: ${({ wrap }) => wrap || ""};

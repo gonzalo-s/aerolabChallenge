@@ -7,7 +7,7 @@ export const WalkthroughWrapper = styled(Box)`
   margin: auto;
   width: 96%;
   max-width: 1024px;
-  height: 107.25rem;
+  height: 100rem;
 
   @media ${device.tablet} {
     height: 56rem;
@@ -33,10 +33,13 @@ export const WalkthroughRelativeWrapper = styled(Box)`
 `;
 
 export const WalkthroughVrImg = styled(ImgContainer)`
-  width: 512px;
   position: absolute;
   top: -2rem;
+  width: 375px;
   //height: 24rem;
+  @media ${device.tablet} {
+    width: 512px;
+  }
   @media ${device.desktop} {
     display: none;
   }
