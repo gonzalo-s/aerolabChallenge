@@ -1,5 +1,7 @@
 <H1 align='center'> Aerolab Challenge </H1><br>
 
+![aerolab gif logo](aerolab.gif)
+
 <div>The challenge is to build a catalog view for a loyalty program app. 
 
 </div><br>
